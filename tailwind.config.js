@@ -7,6 +7,12 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    colors: {
+      ...require("tailwindcss/colors"),
+      background: {
+        DEFAULT: "#edf2f9"
+      },
+    }
   },
   plugins: [],
 };
