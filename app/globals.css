@@ -2,32 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@layer utilities
+{
+  .bg-funnyGradient
+  {
+    background-color: #0061f2;
+    background-image: linear-gradient(135deg, #0061f2, rgba(105, 0, 199, .8));
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  .svg-border-rounded svg
+  {
+    position: absolute;
+    bottom:   0;
+    left:     0;
+    height:   3rem;
+    width:    100%;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+body, html, :root
+{
+  @apply bg-background w-screen h-screen
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section
+{
+  @apply block
+}
+
+svg
+{
+  @apply overflow-hidden
+}
+
+img, svg
+{
+  @apply align-middle
 }
