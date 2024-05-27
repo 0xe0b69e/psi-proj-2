@@ -13,6 +13,7 @@ module.exports = {
       center: true,
       padding: "2rem",
       screens: {
+        ...require( "tailwindcss/defaultTheme" ).screens,
         "2xl": "1400px",
       },
     },
@@ -51,6 +52,7 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        funnyRingColor: "#bfd7fc"
       },
       borderRadius: {
         lg: "var(--radius)",
