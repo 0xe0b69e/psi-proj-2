@@ -22,17 +22,22 @@ export default function Navbar ()
     document.getElementById( "search" ).value = "";
   }
 
+  const onSideNavToggle = function ( e )
+  {
+
+  }
+
   return (
     <nav className="fixed w-full flex justify-between px-4 items-center bg-background-foreground h-14 shadow-lg">
       <div className="flex flex-row h-full items-center space-x-2">
         <Icon className="max-lg:hidden">
-          <HamburgerMenuIcon />
+          <HamburgerMenuIcon onClick={onSideNavToggle} />
         </Icon>
         <Link href="#" className="font-bold w-[240px]">
           SB Admin Pro
         </Link>
         <div className={cn(
-          "flex flex-row items-center justify-center bg-slate-100 h-[44px] w-[240px] rounded-lg px-4 transition-all",
+          "flex flex-row items-center justify-center bg-slate-100 h-[44px] w-[240px] rounded-lg px-4 transition-all max-lg:hidden",
           isInputFocused && "ring-funnyRingColor ring-4",
         )}>
           <input
@@ -53,11 +58,14 @@ export default function Navbar ()
         </div>
       </div>
       <div className="flex flex-row-reverse h-full items-center space-x-4">
+        <Icon className="lg:hidden">
+          <HamburgerMenuIcon onClick={onSideNavToggle} />
+        </Icon>
         <UserAvatar className="ml-4" src="" alt="@me" />
-        <Icon>
+        <Icon className="max-lg:hidden">
           <EnvelopeClosedIcon />
         </Icon>
-        <Icon>
+        <Icon className="max-lg:hidden">
           <BellIcon />
         </Icon>
       </div>
