@@ -4,6 +4,7 @@ import Navbar from "@/components/navbar";
 import Sidenav from "@/components/sidenav";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { ImageGrid } from "@/components/image-grid";
 
 export default function Page() {
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
@@ -26,22 +27,42 @@ export default function Page() {
             <p className="mb-0 text-white/50 text-sm">A professionally designed admin panel template built with Bootstrap 5</p>
           </div>
         </header>
-        <div className="flex flex-col px-[5%] w-full">
+        <div className="flex flex-col px-[5%] w-full overflow-x-hidden">
+          {/* One */}
           <div className="flex flex-col w-full">
             <h2 className="text-xl">Dashboards</h2>
             <p className="text-black/50">Three dashboard examples to get you started!</p>
-            <span className="border-gray-300 border-t-[1px] my-3" />
-            <div className="grid xl:grid-cols-3 max-xl:grid-cols-2 max-md:grid-cols-1">
-              <div className="w-full flex flex-col items-center p-2">
-                <p>One</p>
-              </div>
-              <div className="w-full flex flex-col items-center p-2">
-                <p>Two</p>
-              </div>
-              <div className="w-full flex flex-col items-center p-2">
-                <p>Three</p>
-              </div>
-            </div>
+            <span className="border-gray-300 border-t-[1px] my-3"/>
+            <ImageGrid cols={3} images={[
+              {
+                src: "https://steamuserimages-a.akamaihd.net/ugc/2446096169990098970/28B2C397FD21EF1559EF892FEECE25131D43E5A1/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false",
+                alt: "One",
+                title: "One",
+              },
+              {
+                src: "https://steamuserimages-a.akamaihd.net/ugc/2446096169990098970/28B2C397FD21EF1559EF892FEECE25131D43E5A1/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false",
+                alt: "Two",
+                title: "Two",
+              },
+              {
+                src: "https://steamuserimages-a.akamaihd.net/ugc/2446096169990098970/28B2C397FD21EF1559EF892FEECE25131D43E5A1/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false",
+                alt: "Three",
+                title: "Three",
+              },
+            ]}/>
+          </div>
+          {/* Two */}
+          <div className="flex flex-col w-full">
+            <h2 className="text-xl">App Pages</h2>
+            <p className="text-black/50">App pages to cover common use pages to help build your app!</p>
+            <span className="border-gray-300 border-t-[1px] my-3"/>
+            <ImageGrid cols={4} images={[
+              "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve"
+            ].map((value) => ({
+              src: "https://steamuserimages-a.akamaihd.net/ugc/2446096169990098970/28B2C397FD21EF1559EF892FEECE25131D43E5A1/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false",
+              alt: value,
+              title: value,
+            }))}/>
           </div>
         </div>
       </div>
