@@ -9,11 +9,11 @@ module.exports = {
   ],
   prefix: "",
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-    },
     extend: {
+      container: {
+        center: true,
+        padding: "2rem",
+      },
       screens: {
         "2xl": "1400px",
         "sm": "575px",
@@ -25,12 +25,12 @@ module.exports = {
         background: "#f2f6fc",
         foreground: "#ffffff",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "#0061f2",
+          foreground: "#ffffff",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "#6900c7",
+          foreground: "#ffffff",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",

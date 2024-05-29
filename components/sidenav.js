@@ -4,13 +4,19 @@ import { useState } from "react";
 import { ChevronRightIcon, Cross1Icon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
 
-export default function Sidenav({ visible }) {
+export default function Sidenav( { visible, toggleSideNav } ) {
   return (
     <>
-      <div className={cn(
-        "w-screen h-screen absolute bg-black lg:hidden transition-colors",
-        visible ? "bg-black/50" : "bg-transparent"
-      )}/>
+      <div
+        className={cn(
+          "w-screen h-screen absolute bg-black transition-colors lg:hidden",
+          visible ? "bg-black/50" : "bg-transparent"
+        )}
+        onClick={(e) => {
+          if (visible)
+            toggleSideNav(e);
+        }}
+      />
       <div className={cn(
         "h-screen w-[240px] bg-foreground shadow-lg pt-[85px] pl-4 text-black flex flex-col space-y-2 z-40 transition-all fixed",
         visible ? "translate-x-0" : "-translate-x-full"
