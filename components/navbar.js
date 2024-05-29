@@ -7,7 +7,7 @@ import UserAvatar from "@/components/user-avatar";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { useState } from "react";
 
-export default function Navbar ()
+export default function Navbar ({ toggleSideNav })
 {
   const [ isInputFocused, setIsInputFocused ] = useState( false );
   const [ isInputEmpty, setIsInputEmpty ] = useState( true );
@@ -18,16 +18,14 @@ export default function Navbar ()
     document.getElementById( "search" ).value = "";
   }
 
-  const onSideNavToggle = function ( e )
-  {
-
-  }
-
   return (
-    <nav className="fixed w-full flex justify-between px-4 items-center bg-foreground h-14 shadow-lg text-black">
+    <nav className="fixed w-full flex justify-between px-4 items-center bg-foreground h-14 shadow-lg text-black z-50">
       <div className="flex flex-row h-full items-center space-x-2">
-        <Icon className="max-lg:hidden">
-          <HamburgerMenuIcon onClick={onSideNavToggle} />
+        <Icon
+          className="max-lg:hidden"
+          onClick={toggleSideNav}
+        >
+          <HamburgerMenuIcon />
         </Icon>
         <Link href="#" className="font-bold w-[240px]">
           SB Admin Pro
@@ -54,8 +52,11 @@ export default function Navbar ()
         </div>
       </div>
       <div className="flex flex-row-reverse h-full items-center space-x-4">
-        <Icon className="lg:hidden">
-          <HamburgerMenuIcon onClick={onSideNavToggle} />
+        <Icon
+          className="lg:hidden"
+          onClick={toggleSideNav}
+        >
+          <HamburgerMenuIcon />
         </Icon>
         <UserAvatar className="ml-4" src="" alt="@me" />
         <Icon className="max-lg:hidden">
@@ -69,7 +70,7 @@ export default function Navbar ()
   );
 }
 
-function Icon ( { children, className } )
+function Icon ( { children, className, ...props } )
 {
   return (
     <span
@@ -78,6 +79,7 @@ function Icon ( { children, className } )
         "cursor-pointer text-gray-800/50 duration-300",
         className
       )}
+      {...props}
     >
       {children}
     </span>

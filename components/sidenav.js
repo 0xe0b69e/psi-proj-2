@@ -4,9 +4,12 @@ import { useState } from "react";
 import { ChevronRightIcon, Cross1Icon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
 
-export default function Sidenav() {
+export default function Sidenav({ visible }) {
   return (
-    <div className="h-screen w-[240px] bg-foreground shadow-lg z-40 pt-[85px] pl-4 text-black flex flex-col space-y-2">
+    <div className={cn(
+      "h-screen w-[240px] bg-foreground shadow-lg pt-[85px] pl-4 text-black flex flex-col space-y-2 z-40 transition-all",
+      visible ? "translate-x-0" : "-translate-x-full"
+    )}>
       <Header>fdsf1</Header>
       <Item title="Test" icon={<Cross1Icon/>}>
         <p>fsdfsdf</p>
