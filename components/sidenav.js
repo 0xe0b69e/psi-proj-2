@@ -6,23 +6,30 @@ import { cn } from "@/lib/utils";
 
 export default function Sidenav({ visible }) {
   return (
-    <div className={cn(
-      "h-screen w-[240px] bg-foreground shadow-lg pt-[85px] pl-4 text-black flex flex-col space-y-2 z-40 transition-all fixed",
-      visible ? "translate-x-0" : "-translate-x-full"
-    )}>
-      <Header>fdsf1</Header>
-      <Item title="Test" icon={<Cross1Icon/>}>
-        <p>fsdfsdf</p>
-        <p>fsdfsdf</p>
-        <p>fsdfsdf</p>
-        <p>fsdfsdf</p>
-      </Item>
-      <span className="flex-grow"/>
-      <div className="w-[calc(100% + 1rem)] h-20 bg-gray-300/25 box-border ml-[-1rem] flex flex-col justify-center pl-3">
-        <p className="text-black/50 text-xs">Logged in as:</p>
-        <p className="text-sm">TODO</p>
+    <>
+      <div className={cn(
+        "w-screen h-screen absolute bg-black lg:hidden transition-colors",
+        visible ? "bg-black/50" : "bg-transparent"
+      )}/>
+      <div className={cn(
+        "h-screen w-[240px] bg-foreground shadow-lg pt-[85px] pl-4 text-black flex flex-col space-y-2 z-40 transition-all fixed",
+        visible ? "translate-x-0" : "-translate-x-full"
+      )}>
+        <Header>fdsf1</Header>
+        <Item title="Test" icon={<Cross1Icon/>}>
+          <p>fsdfsdf</p>
+          <p>fsdfsdf</p>
+          <p>fsdfsdf</p>
+          <p>fsdfsdf</p>
+        </Item>
+        <span className="flex-grow"/>
+        <div
+          className="w-[calc(100% + 1rem)] h-20 bg-gray-300/25 box-border ml-[-1rem] flex flex-col justify-center pl-3">
+          <p className="text-black/50 text-xs">Logged in as:</p>
+          <p className="text-sm">TODO</p>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

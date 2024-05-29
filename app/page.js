@@ -17,8 +17,8 @@ export default function Page() {
       <Navbar toggleSideNav={onSideNavToggle} />
       <Sidenav visible={isSideNavOpen} />1
       <div className={cn(
-        "h-screen w-full bg-background pt-14 text-black transition-all",
-        isSideNavOpen && "ml-[240px]"
+        "h-full w-full bg-background pt-7 text-black transition-all",
+        isSideNavOpen && "lg:ml-[240px]"
       )}>
         fsldkfhsdkh
       </div>
