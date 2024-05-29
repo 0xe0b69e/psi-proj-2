@@ -12,13 +12,12 @@ module.exports = {
     container: {
       center: true,
       padding: "2rem",
-      screens: {
-        ...require( "tailwindcss/defaultTheme" ).screens,
-        "2xl": "1400px",
-        sm: "575px"
-      },
     },
     extend: {
+      screens: {
+        "2xl": "1400px",
+        "sm": "575px",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

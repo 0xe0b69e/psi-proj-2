@@ -13,12 +13,15 @@ export default function Page() {
   };
 
   return (
-    <>
+    <main className="overflow-x-hidden">
       <Navbar toggleSideNav={onSideNavToggle} />
-      <Sidenav visible={isSideNavOpen} />
-      <div className="h-screen">
-      
+      <Sidenav visible={isSideNavOpen} />1
+      <div className={cn(
+        "h-screen w-full bg-background pt-14 text-black transition-all",
+        isSideNavOpen && "ml-[240px]"
+      )}>
+        fsldkfhsdkh
       </div>
-    </>
+    </main>
   );
 }
