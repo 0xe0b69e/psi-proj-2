@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  BellIcon, Cross1Icon,
-  EnvelopeClosedIcon,
-  HamburgerMenuIcon,
-} from "@radix-ui/react-icons";
+import { BellIcon, Cross1Icon, EnvelopeClosedIcon, HamburgerMenuIcon, } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import UserAvatar from "@/components/user-avatar";
@@ -28,7 +24,7 @@ export default function Navbar ()
   }
 
   return (
-    <nav className="fixed w-full flex justify-between px-4 items-center bg-background-foreground h-14 shadow-lg">
+    <nav className="fixed w-full flex justify-between px-4 items-center bg-foreground h-14 shadow-lg text-black">
       <div className="flex flex-row h-full items-center space-x-2">
         <Icon className="max-lg:hidden">
           <HamburgerMenuIcon onClick={onSideNavToggle} />
