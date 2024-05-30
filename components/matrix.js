@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
+import { cn } from "@/lib/utils";
 
-export default function Matrix()
+export default function Matrix ( { className, ...props } )
 {
   const canvasRef = useRef( null );
 
@@ -37,9 +38,7 @@ export default function Matrix()
         ctx.fillText( text, i * fontSize, rainDrops[ i ] * fontSize );
 
         if ( rainDrops[ i ] * fontSize > canvas.height && Math.random() > 0.975 )
-        {
           rainDrops[ i ] = 0;
-        }
 
         rainDrops[ i ]++;
       }
@@ -50,5 +49,8 @@ export default function Matrix()
     return () => clearInterval( interval );
   }, [] );
 
-  return <canvas ref={canvasRef} id="matrix" className="fixed inset-0 z-0 bg-black w-screen h-screen" />;
+  return <canvas {...props} ref={canvasRef} id="matrix" className={cn(
+    "fixed inset-0 z-0 bg-black w-screen h-screen",
+    className
+  )} />;
 }

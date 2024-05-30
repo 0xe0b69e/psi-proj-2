@@ -27,7 +27,7 @@ export default function Navbar ({ toggleSideNav })
         >
           <HamburgerMenuIcon />
         </Icon>
-        <Link href="#" className="font-bold sm:w-[170px]">
+        <Link href="/" className="font-bold sm:w-[170px]">
           SB Admin Pro
         </Link>
         <div className={cn(

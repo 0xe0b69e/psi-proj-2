@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export function Intersecting ( { children, onVisible = () => {}, onHide = () => {} } )
+export function Intersecting ( { children, onVisible = () => {}, onHide = () => {}, ...props } )
 {
   const [ state, setState ] = useState( false );
   const ref = useRef( null );
@@ -40,7 +40,7 @@ export function Intersecting ( { children, onVisible = () => {}, onHide = () => 
   }, [onHide, onVisible] );
 
   return (
-    <span ref={ref}>
+    <span ref={ref} {...props}>
       {children}
     </span>
   );
