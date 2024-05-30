@@ -7,6 +7,10 @@ module.exports = {
     "./app/**/*.{js,jsx}",
     "./src/**/*.{js,jsx}",
   ],
+  safelist: [
+    "grid",
+    {pattern: /(max-)?(md:|xl:)?grid-cols-./},
+  ],
   prefix: "",
   theme: {
     extend: {
