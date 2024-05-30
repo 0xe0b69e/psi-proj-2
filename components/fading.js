@@ -5,7 +5,13 @@ import { cn } from "@/lib/utils";
 import { Direction } from "@/lib/enums";
 import { Intersecting } from "@/components/intersecting";
 
-export function Fading ( { children, delay, direction } )
+export function Fading ( {
+                           children, delay, direction, onVisible = () =>
+  {
+  }, onHide = () =>
+  {
+  }
+                         } )
 {
   const [ isInView, setIsInView ] = useState( false );
 
@@ -28,8 +34,17 @@ export function Fading ( { children, delay, direction } )
 
   return (
     <Intersecting
-      onVisible={() => setTimeout( () => setIsInView( true ), delay * 1000 ?? 0 )}
-      onHide={() => setIsInView( false )}
+      onVisible={() =>
+      {
+        onVisible();
+        setTimeout( () => setIsInView( true ), delay * 1000 ?? 0 );
+      }}
+
+      onHide={() =>
+      {
+        onHide();
+        setIsInView( false );
+      }}
 
       className={cn(
         "transition-all duration-500 ease-in-out",
