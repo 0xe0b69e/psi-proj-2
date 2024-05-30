@@ -20,10 +20,10 @@ export default function Page ()
         </header>
         <div className="flex flex-col px-[5%] w-full overflow-x-hidden">
           {/* One */}
-          <div className="flex flex-col w-full">
+          <div className="flex flex-col w-full max-md:items-center">
             <h2 className="text-xl">Dashboards</h2>
             <p className="text-slate-500 dark:text-slate-400">Three dashboard examples to get you started!</p>
-            <span className="border-gray-300 dark:border-text-dark border-t-[1px] my-3" />
+            <span className="border-gray-300 border-t-[1px] my-3 w-full" />
             <ImageGrid fadeDirection={Direction.LEFT} colsClasses="xl:grid-cols-3 md:grid-cols-2 grid-cols-1" images={[
               {
                 src: "https://steamuserimages-a.akamaihd.net/ugc/2446096169990098970/28B2C397FD21EF1559EF892FEECE25131D43E5A1/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false",
@@ -43,10 +43,10 @@ export default function Page ()
             ]} />
           </div>
           {/* Two */}
-          <div className="flex flex-col w-full">
+          <div className="flex flex-col w-full max-md:items-center">
             <h2 className="text-xl">App Pages</h2>
             <p className="text-slate-500 dark:text-slate-400">App pages to cover common use pages to help build your app!</p>
-            <span className="border-gray-300 border-t-[1px] my-3" />
+            <span className="border-gray-300 border-t-[1px] my-3 w-full" />
             <ImageGrid colsClasses="xl:grid-cols-4 md:grid-cols-3 grid-cols-1" images={[
               "One", "Two", "Three", "Four",
               "Five", "Six", "Seven", "Eight",

@@ -24,8 +24,8 @@ export function Intersecting ( { children, onVisible = () => {}, onHide = () => 
       },
       {
         root: null,
-        rootMargin: "0px",
-        threshold: 0.1
+        rootMargin: "10px",
+        threshold: 0.1,
       }
     );
 
