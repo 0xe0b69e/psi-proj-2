@@ -2,11 +2,22 @@ import "@/app/globals.css";
 
 import { inter } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
+import { DarkModeProvider } from "@/providers/dark-mode";
 
-export default function RootLayout({ children }) {
+export default function RootLayout ( { children } )
+{
   return (
-    <html lang="en">
-      <body className={cn(inter.className, "antialiased overflow-x-hidden")}>{children}</body>
-    </html>
+    <DarkModeProvider>
+      <html lang="en">
+      <body
+        className={cn(
+          inter.className,
+          "antialiased overflow-x-hidden transition-all"
+        )}
+      >
+      {children}
+      </body>
+      </html>
+    </DarkModeProvider>
   );
 }

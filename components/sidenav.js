@@ -25,8 +25,9 @@ export default function Sidenav ( { visible, toggleSideNav } )
         }}
       />
       <div className={cn(
-        "h-screen w-[240px] bg-foreground shadow-lg pt-[85px] pl-4 text-black flex flex-col space-y-2 z-40 transition-all fixed",
-        visible ? "translate-x-0" : "-translate-x-full"
+        "h-screen w-[240px] shadow-lg pt-[85px] pl-4 flex flex-col space-y-2 z-40 transition-all fixed",
+        visible ? "translate-x-0" : "-translate-x-full",
+        "bg-foreground dark:bg-foreground-dark"
       )}>
         <Header>core</Header>
         <Item
@@ -51,8 +52,11 @@ export default function Sidenav ( { visible, toggleSideNav } )
         </Item>
         <span className="flex-grow" />
         <div
-          className="w-[calc(100% + 1rem)] h-20 bg-gray-300/25 box-border ml-[-1rem] flex flex-col justify-center pl-3">
-          <p className="text-black/50 text-xs">Logged in as:</p>
+          className={cn(
+            "w-[calc(100% + 1rem)] h-20 box-border ml-[-1rem] flex flex-col justify-center pl-3",
+            "bg-gray-300/25 dark:bg-slate-800/40"
+          )}>
+          <p className="text-xs text-text/50 dark:text-text-dark/50">Logged in as:</p>
           <p className="text-sm">TODO</p>
         </div>
       </div>
@@ -61,7 +65,7 @@ export default function Sidenav ( { visible, toggleSideNav } )
 }
 
 const Header = ( { children } ) => (
-  <p className="text-xs uppercase font-bold text-gray-400/75 mb-2">
+  <p className="text-xs uppercase font-bold text-slate-500 dark:text-slate-400 mb-2">
     {children}
   </p>
 );

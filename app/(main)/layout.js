@@ -1,13 +1,15 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Navbar from "@/components/navbar";
 import Sidenav from "@/components/sidenav";
+import { DarkModeContext } from "@/contexts/dark-mode";
 
 export default function Layout ( { children } )
 {
   const [ isSideNavOpen, setIsSideNavOpen ] = useState( false );
+  const { isDarkMode } = useContext(DarkModeContext);
 
   const onSideNavToggle = function ( e )
   {
@@ -15,7 +17,14 @@ export default function Layout ( { children } )
   };
 
   return (
-    <>
+    <div
+      className={cn(
+        "w-full h-full transition-all",
+        isDarkMode && "dark",
+        "text-text dark:text-text-dark",
+        "bg-background dark:bg-background-dark",
+      )}
+    >
       <Navbar toggleSideNav={onSideNavToggle} />
       <Sidenav visible={isSideNavOpen} toggleSideNav={onSideNavToggle} />
       <div className={cn(
@@ -24,6 +33,6 @@ export default function Layout ( { children } )
       )}>
         {children}
       </div>
-    </>
+    </div>
   );
 }

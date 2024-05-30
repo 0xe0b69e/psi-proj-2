@@ -1,6 +1,6 @@
 /** @type {import("tailwindcss").Config} */
 module.exports = {
-  darkMode: [ "class" ],
+  darkMode: [ "selector" ],
   content: [
     "./pages/**/*.{js,jsx}",
     "./components/**/*.{js,jsx}",
@@ -22,8 +22,18 @@ module.exports = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "#f2f6fc",
-        foreground: "#ffffff",
+        background: {
+          DEFAULT: "#f2f6fc",
+          dark: "#252525"
+        },
+        foreground: {
+          DEFAULT: "#ffffff",
+          dark: "#1a202c"
+        },
+        text: {
+          DEFAULT: "#1a202c",
+          dark: "#f2f6fc"
+        },
         primary: {
           DEFAULT: "#0061f2",
           foreground: "#ffffff",
@@ -52,7 +62,10 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        funnyRingColor: "#bfd7fc"
+        funnyRingColor: {
+          DEFAULT: "#bfd7fc",
+          dark: "#1d2f4f",
+        }
       },
       borderRadius: {
         lg: "var(--radius)",
