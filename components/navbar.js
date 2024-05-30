@@ -65,14 +65,14 @@ export default function Navbar ( { toggleSideNav } )
         >
           <HamburgerMenuIcon />
         </Icon>
-        <UserAvatar className="ml-4" src="" alt="@me" />
+        <UserAvatar className="ml-4 max-[271px]:hidden" src="" alt="@me" />
         <Icon className="max-lg:hidden">
           <EnvelopeClosedIcon />
         </Icon>
         <Icon className="max-lg:hidden">
           <BellIcon />
         </Icon>
-        <Icon onClick={toggleDarkMode} className="transition-all">
+        <Icon onClick={toggleDarkMode} className="transition-all max-[331px]:hidden">
           {isDarkMode ? <MoonIcon className="text-sky-500" /> : <SunIcon className="text-yellow-500" />}
         </Icon>
       </div>
