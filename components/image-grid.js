@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Fading } from "@/components/fading";
@@ -8,14 +7,14 @@ export const ImageGrid = ( { images, className, colsClasses } ) =>
   return (
     <div className={cn( "grid", colsClasses )}>
       {images.map( ( image, index ) => (
-        <ImageItem key={index} image={image} className={className} />
+        <ImageItem key={index} image={image} className={className} delay={index * (1 / images.length)} />
       ) )}
     </div>
   );
 };
 
-const ImageItem = ( { image, className } ) => (
-  <Fading>
+const ImageItem = ( { image, className, delay } ) => (
+  <Fading delay={delay}>
     <div className="w-full flex flex-col items-center p-2">
       <Link href={image.url ?? "#"}>
         <img
