@@ -11,8 +11,6 @@ export default function Sidenav ( { visible, toggleSideNav } )
   const path = usePathname();
   const searchParams = useSearchParams();
 
-  console.log( searchParams.get( "type" ) );
-
   return (
     <>
       <div
