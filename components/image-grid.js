@@ -2,19 +2,19 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Fading } from "@/components/fading";
 
-export const ImageGrid = ( { images, className, colsClasses } ) =>
+export const ImageGrid = ( { images, className, colsClasses, fadeDirection } ) =>
 {
   return (
     <div className={cn( "grid", colsClasses )}>
       {images.map( ( image, index ) => (
-        <ImageItem key={index} image={image} className={className} delay={index * (1 / images.length)} />
+        <ImageItem key={index} image={image} className={className} delay={index * (1 / images.length)} direction={fadeDirection} />
       ) )}
     </div>
   );
 };
 
-const ImageItem = ( { image, className, delay } ) => (
-  <Fading delay={delay}>
+const ImageItem = ( { image, className, ...props } ) => (
+  <Fading {...props}>
     <div className="w-full flex flex-col items-center p-2">
       <Link href={image.url ?? "#"}>
         <img
