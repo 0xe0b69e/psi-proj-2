@@ -10,7 +10,7 @@ export default function Sidenav( { visible, toggleSideNav } ) {
       <div
         className={cn(
           "w-screen h-screen absolute bg-black transition-colors lg:hidden",
-          visible ? "bg-black/50" : "bg-transparent"
+          visible ? "bg-black/50" : "hidden"
         )}
         onClick={(e) => {
           if (visible)
@@ -45,14 +45,20 @@ const Header = ( { children } ) => (
   </p>
 );
 
-function Item( { children, title, icon } ) {
-  const [expanded, setExpanded] = useState(false);
+function Item( { children, title, icon, onExpand, isExpanded = false } ) {
+  const [expanded, setExpanded] = useState(isExpanded);
+
+  const expand = function ( e ) {
+    if (onExpand)
+      onExpand(e);
+    setExpanded(!expanded);
+  }
 
   return (
     <div className="flex flex-col space-y-1">
       <div
         className="flex flex-row space-x-4 items-center pr-4 cursor-pointer select-none"
-        onClick={() => setExpanded(!expanded)}
+        onClick={expand}
       >
         {icon}
         <p>{title}</p>
