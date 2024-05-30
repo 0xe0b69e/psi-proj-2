@@ -6,6 +6,7 @@ export const ImageGrid = ( { images, className, colsClasses, fadeDirection } ) =
 {
   return (
     <div className={cn( "grid", colsClasses )}>
+      {/* Maybe TODO: Fix issue where if top images are already loaded, delay still accounts for those images, delaying fading of new ones */}
       {images.map( ( image, index ) => (
         <ImageItem key={index} image={image} className={className} delay={index * (1 / images.length)} direction={fadeDirection} />
       ) )}
