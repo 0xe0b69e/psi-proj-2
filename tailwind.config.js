@@ -35,11 +35,11 @@ module.exports = {
           dark: "#f2f6fc"
         },
         primary: {
-          DEFAULT: "#0061f2",
+          DEFAULT: "#5607dc",
           foreground: "#ffffff",
         },
         secondary: {
-          DEFAULT: "#6900c7",
+          DEFAULT: "#7f08c5",
           foreground: "#ffffff",
         },
         destructive: {
