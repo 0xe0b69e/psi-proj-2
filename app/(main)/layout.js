@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Navbar from "@/components/navbar";
 import Sidenav from "@/components/sidenav";
 import { DarkModeContext } from "@/contexts/dark-mode";
@@ -9,7 +9,12 @@ import { DarkModeContext } from "@/contexts/dark-mode";
 export default function Layout ( { children } )
 {
   const [ isSideNavOpen, setIsSideNavOpen ] = useState( false );
-  const { isDarkMode } = useContext(DarkModeContext);
+  const { isDarkMode } = useContext( DarkModeContext );
+
+  useEffect( () =>
+  {
+    setIsSideNavOpen( window.innerWidth > 1024 );
+  }, [] );
 
   const onSideNavToggle = function ( e )
   {

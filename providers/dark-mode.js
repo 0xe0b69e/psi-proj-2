@@ -22,7 +22,13 @@ export const DarkModeProvider = ({ children }) => {
   ```
   but it works
    */
-  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("dark-mode") === "true");
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect( () =>
+  {
+    const darkMode = localStorage.getItem("dark-mode") === "true";
+    setIsDarkMode(darkMode);
+  }, [] );
 
   const toggleDarkMode = () => {
     setIsDarkMode(prevMode => !prevMode);
