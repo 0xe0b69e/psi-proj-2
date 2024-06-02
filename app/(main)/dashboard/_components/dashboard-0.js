@@ -5,7 +5,7 @@ import AtWork from "@/public/at-work.svg";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { CircularButton } from "@/components/circular-button";
-import { DotsVerticalIcon } from "@radix-ui/react-icons";
+import { ChevronRightIcon, DotsVerticalIcon } from "@radix-ui/react-icons";
 import ProgressBar from "@/components/progress-bar";
 import Link from "next/link";
 
@@ -58,13 +58,11 @@ export default function Page ()
               </div>
             </Card>
             <Card className="w-full 2xl+:w-[50%] p-5">
-              <CardHeader>
-                <div className="flex items-center justify-between px-5 w-full">
-                  <p className="text-lg text-primary-lighter">Progress Tracker</p>
-                  <CircularButton>
-                    <DotsVerticalIcon />
-                  </CircularButton>
-                </div>
+              <CardHeader className="justify-between px-5">
+                <p className="text-lg text-primary-lighter">Progress Tracker</p>
+                <CircularButton>
+                  <DotsVerticalIcon />
+                </CircularButton>
               </CardHeader>
 
               <div className="flex flex-col space-y-4 mb-10">
@@ -73,9 +71,12 @@ export default function Page ()
                 ) )}
               </div>
 
-              <CardFooter>
-
-              </CardFooter>
+              <Link href="#">
+                <CardFooter className="justify-between px-5">
+                  <p className="text-sm">Visit Task Center</p>
+                  <ChevronRightIcon />
+                </CardFooter>
+              </Link>
             </Card>
           </div>
         </div>

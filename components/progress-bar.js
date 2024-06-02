@@ -13,6 +13,8 @@ export default function ProgressBar ( { progress, index } )
   const progressBarContainerRef = useRef( null );
   let animationFrameId = null;
 
+  const timeout = index * 100 ?? 0;
+
   const percentage = isVisible ? progress.percentage : 0;
   const animationPercentage = calcPercentage( currentWidth, progressBarContainerRef.current?.offsetWidth );
 
@@ -55,14 +57,14 @@ export default function ProgressBar ( { progress, index } )
           {
             setIsVisible( true );
             updateWidth();
-          }, index * 100 ?? 0 )}
+          }, timeout )}
 
           onHide={() => setTimeout( () =>
           {
             setIsVisible( false );
             if ( animationFrameId )
               cancelAnimationFrame( animationFrameId );
-          }, index * 100 ?? 0 )}
+          }, timeout )}
         >
           <div
             ref={progressBarRef}
