@@ -6,12 +6,12 @@ import { Direction } from "@/lib/enums";
 import { Intersecting } from "@/components/intersecting";
 
 export function Fading ( {
-                           children, delay, direction, onVisible = () =>
-  {
-  }, onHide = () =>
-  {
-  }
-                         } )
+  children,
+  delay,
+  direction,
+  onVisible = () => {},
+  onHide = () => {}
+} )
 {
   const [ isInView, setIsInView ] = useState( false );
 

@@ -11,11 +11,11 @@ import ProgressBar from "@/components/progress-bar";
 export default function Page ()
 {
   const progress = [
-    { name: "Server Migration", percentage: 20 },
-    { name: "Sales Tracking", percentage: 40 },
-    { name: "Customer Database", percentage: 60 },
-    { name: "Payout Details", percentage: 80 },
-    { name: "Account Setup", percentage: 100 },
+    { name: "Server Migration", percentage: 20, color: "red"},
+    { name: "Sales Tracking", percentage: 40, color: "yellow"},
+    { name: "Customer Database", percentage: 60, color: "blue" },
+    { name: "Payout Details", percentage: 80, color: "cyan" },
+    { name: "Account Setup", percentage: 100, color: "green" },
   ];
 
   return (
@@ -69,7 +69,9 @@ export default function Page ()
                 </CircularButton>
               </div>
               <div className="flex flex-col space-y-4">
-                <ProgressBar progress={progress[4]} color="#00ff00" />
+                {progress.map( ( progress, index ) => (
+                  <ProgressBar key={index} progress={progress} index={index} />
+                ))}
               </div>
             </Card>
           </div>
