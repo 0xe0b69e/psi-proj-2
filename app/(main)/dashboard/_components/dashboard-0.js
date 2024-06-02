@@ -12,11 +12,11 @@ import Link from "next/link";
 export default function Page ()
 {
   const progress = [
-    { name: "Server Migration", percentage: 20, color: "red" },
-    { name: "Sales Tracking", percentage: 40, color: "yellow" },
-    { name: "Customer Database", percentage: 60, color: "blue" },
-    { name: "Payout Details", percentage: 80, color: "cyan" },
-    { name: "Account Setup", percentage: 100, color: "green" },
+    { name: "Server Migration", percentage: 20, color: "#e81500" },
+    { name: "Sales Tracking", percentage: 40, color: "#f4a100" },
+    { name: "Customer Database", percentage: 60, color: "#0061f2" },
+    { name: "Payout Details", percentage: 80, color: "#00cfd5" },
+    { name: "Account Setup", percentage: 100, color: "#00ac69" },
   ];
 
   return (
@@ -24,7 +24,7 @@ export default function Page ()
       <header
         className="top-0 left-0 right-0 bg-gradient-to-r from-primary to-secondary py-10 h-64 z-0 w-full"
       />
-      <article className="z-10 w-full overflow-x-hidden px-6 xl:px-[5vw] -mt-20 pb-6">
+      <article className="z-10 w-full overflow-x-hidden px-6 xl:px-[5vw] -mt-20 flex flex-col space-y-6 pb-2">
         <div className="relative flex flex-col 2xl+:flex-row 2xl+:space-x-6 max-2xl+:space-y-6 w-full">
           <Card
             className={cn(
@@ -79,6 +79,20 @@ export default function Page ()
               </Link>
             </Card>
           </div>
+        </div>
+        <div className="grid grid-cols-2 w-full gap-6">
+          <Card className="w-full bg-blue-600 dark:bg-blue-600">
+
+          </Card>
+          <Card className="w-full bg-yellow-500 dark:bg-yellow-500">
+
+          </Card>
+          <Card className="w-full bg-emerald-500 dark:bg-emerald-500">
+
+          </Card>
+          <Card className="w-full bg-red-600 dark:bg-red-600">
+
+          </Card>
         </div>
       </article>
     </main>
