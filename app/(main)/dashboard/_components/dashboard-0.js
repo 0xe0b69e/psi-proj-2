@@ -4,9 +4,20 @@ import { Card } from "@/components/card";
 import AtWork from "@/public/at-work.svg";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { CircularButton } from "@/components/circular-button";
+import { DotsVerticalIcon } from "@radix-ui/react-icons";
+import ProgressBar from "@/components/progress-bar";
 
 export default function Page ()
 {
+  const progress = [
+    { name: "Server Migration", percentage: 20 },
+    { name: "Sales Tracking", percentage: 40 },
+    { name: "Customer Database", percentage: 60 },
+    { name: "Payout Details", percentage: 80 },
+    { name: "Account Setup", percentage: 100 },
+  ];
+
   return (
     <main className="relative overflow-x-hidden h-full w-full bg-background dark:bg-background-dark transition-all">
       <header
@@ -34,16 +45,32 @@ export default function Page ()
           <div className="flex flex-col xl:flex-row 2xl+:w-[66%] xl:space-x-6 max-xl:space-y-6">
             <Card className="w-full 2xl+:w-[50%] p-5">
               <div className={cn(
-                "h-14 -m-5 mb-0 w-[calc(100%+2.5rem)]",
+                "h-14 -m-5 mb-5 w-[calc(100%+2.5rem)]",
                 "bg-gray-300/50 dark:bg-gray-900/25 border-gray-300 dark:border-gray-900/75",
                 "rounded-t-md border-b-[1px]",
                 "flex items-center justify-between px-5",
               )}>
-                <p className="text-lg text-primary-lighter">fsdfsdf</p>
+                <p className="text-lg text-primary-lighter">Recent Activity</p>
+                <CircularButton>
+                  <DotsVerticalIcon />
+                </CircularButton>
               </div>
             </Card>
-            <Card className="w-full 2xl+:w-[50%] p-4">
-
+            <Card className="w-full 2xl+:w-[50%] p-5">
+              <div className={cn(
+                "h-14 -m-5 mb-5 w-[calc(100%+2.5rem)]",
+                "bg-gray-300/50 dark:bg-gray-900/25 border-gray-300 dark:border-gray-900/75",
+                "rounded-t-md border-b-[1px]",
+                "flex items-center justify-between px-5",
+              )}>
+                <p className="text-lg text-primary-lighter">Progress Tracker</p>
+                <CircularButton>
+                  <DotsVerticalIcon />
+                </CircularButton>
+              </div>
+              <div className="flex flex-col space-y-4">
+                <ProgressBar progress={progress[4]} color="#00ff00" />
+              </div>
             </Card>
           </div>
         </div>

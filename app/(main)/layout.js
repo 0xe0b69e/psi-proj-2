@@ -11,10 +11,12 @@ export default function Layout ( { children } )
   const [ isSideNavOpen, setIsSideNavOpen ] = useState( false );
   const { isDarkMode } = useContext( DarkModeContext );
 
+  /*
   useEffect( () =>
   {
     setIsSideNavOpen( window.innerWidth > 1024 );
   }, [] );
+   */
 
   const onSideNavToggle = function ( e )
   {
