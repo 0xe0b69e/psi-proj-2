@@ -9,18 +9,11 @@ export default function Page ()
 
   const type = Number( searchParams.get( "type" ) ?? 0 );
 
-  return (
-    <>
-      {( () =>
-      {
-        switch ( type )
-        {
-          case 0:
-            return <Dashboard0 />;
-          default:
-            return <Dashboard0 />;
-        }
-      } )()}
-    </>
-  );
+  switch ( type )
+  {
+    case 0:
+      return <Dashboard0 />;
+    default:
+      return <Dashboard0 />;
+  }
 }

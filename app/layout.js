@@ -12,7 +12,7 @@ export default function RootLayout ( { children } )
       <body
         className={cn(
           inter.className,
-          "antialiased overflow-x-hidden transition-all"
+          "antialiased overflow-x-hidden transition-all w-screen h-screen"
         )}
       >
       {children}

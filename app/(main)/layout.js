@@ -33,7 +33,7 @@ export default function Layout ( { children } )
       <Navbar toggleSideNav={onSideNavToggle} />
       <Sidenav visible={isSideNavOpen} toggleSideNav={onSideNavToggle} />
       <div className={cn(
-        "w-full h-full transition-all",
+        "w-full h-full transition-all pt-14",
         isSideNavOpen && "lg:ml-[240px] lg:w-[calc(100%-240px)]"
       )}>
         {children}

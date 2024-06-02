@@ -15,7 +15,9 @@ module.exports = {
         padding: "2rem",
       },
       screens: {
+        "2xl+": "1500px",
         "2xl": "1400px",
+        "xl": "1200px",
         "sm": "575px",
       },
       colors: {
@@ -36,10 +38,12 @@ module.exports = {
         },
         primary: {
           DEFAULT: "#5607dc",
+          lighter: "#6f08e6",
           foreground: "#ffffff",
         },
         secondary: {
           DEFAULT: "#7f08c5",
+          lighter: "#a10ab2",
           foreground: "#ffffff",
         },
         destructive: {

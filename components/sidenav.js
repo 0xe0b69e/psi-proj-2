@@ -15,7 +15,7 @@ export default function Sidenav ( { visible, toggleSideNav } )
     <>
       <div
         className={cn(
-          "w-screen h-screen absolute bg-black transition-colors lg:hidden",
+          "w-screen h-screen absolute bg-black transition-colors lg:hidden z-30",
           visible ? "bg-black/50" : "hidden"
         )}
         onClick={( e ) =>
@@ -34,7 +34,7 @@ export default function Sidenav ( { visible, toggleSideNav } )
           title="Dashboards"
           icon={<Cross1Icon />}
           className={cn(
-            path === "/dashboard" && "text-primary font-bold"
+            path === "/dashboard" && "text-primary-lighter font-bold"
           )}
         >
           <Link
@@ -43,7 +43,7 @@ export default function Sidenav ( { visible, toggleSideNav } )
             <div
               className={cn(
                 "w-full h-[38px]",
-                ( path === "/dashboard" && searchParams.get( "type" ) === "0" ) && "text-primary font-bold",
+                ( path === "/dashboard" && searchParams.get( "type" ) === "0" ) && "text-primary-lighter font-bold",
               )}
             >
               <p>Zero</p>
