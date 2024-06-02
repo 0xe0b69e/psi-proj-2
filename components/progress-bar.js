@@ -47,7 +47,7 @@ export default function ProgressBar ( { progress, index } )
         </p>
       </div>
       <div
-        className="bg-gray-400 w-full h-5 rounded-md"
+        className="bg-gray-200 dark:bg-gray-700/50 w-full h-5 rounded-md"
         ref={progressBarContainerRef}
       >
         <Intersecting
