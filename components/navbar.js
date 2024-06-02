@@ -7,6 +7,7 @@ import UserAvatar from "@/components/user-avatar";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { useContext, useState } from "react";
 import { DarkModeContext } from "@/contexts/dark-mode";
+import { CircularButton } from "@/components/circular-button";
 
 export default function Navbar ( { toggleSideNav } )
 {
@@ -27,12 +28,12 @@ export default function Navbar ( { toggleSideNav } )
       "bg-foreground dark:bg-foreground-dark",
     )}>
       <div className="flex flex-row h-full items-center space-x-2">
-        <Icon
+        <CircularButton
           className="max-lg:hidden"
           onClick={toggleSideNav}
         >
           <HamburgerMenuIcon />
-        </Icon>
+        </CircularButton>
         <Link href="/" className="font-bold sm:w-[170px]">
           SB Admin Pro
         </Link>
@@ -59,40 +60,23 @@ export default function Navbar ( { toggleSideNav } )
         </div>
       </div>
       <div className="flex flex-row-reverse h-full items-center space-x-4">
-        <Icon
+        <CircularButton
           className="lg:hidden"
           onClick={toggleSideNav}
         >
           <HamburgerMenuIcon />
-        </Icon>
+        </CircularButton>
         <UserAvatar className="ml-4 max-[271px]:hidden" src="" alt="@me" />
-        <Icon className="max-lg:hidden">
+        <CircularButton className="max-lg:hidden">
           <EnvelopeClosedIcon />
-        </Icon>
-        <Icon className="max-lg:hidden">
+        </CircularButton>
+        <CircularButton className="max-lg:hidden">
           <BellIcon />
-        </Icon>
-        <Icon onClick={toggleDarkMode} className="transition-all max-[331px]:hidden">
+        </CircularButton>
+        <CircularButton onClick={toggleDarkMode} className="transition-all max-[331px]:hidden">
           {isDarkMode ? <MoonIcon className="text-sky-500" /> : <SunIcon className="text-yellow-500" />}
-        </Icon>
+        </CircularButton>
       </div>
     </nav>
-  );
-}
-
-function Icon ( { children, className, ...props } )
-{
-  return (
-    <span
-      className={cn(
-        "w-11 h-11 rounded-full transition-all items-center justify-center inline-flex active:ring-4",
-        "hover:bg-gray-300/75 hover:dark:bg-slate-800",
-        "cursor-pointer duration-300",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </span>
   );
 }
