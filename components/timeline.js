@@ -27,7 +27,7 @@ export default function Timeline ( { points = [] } )
                 "text-xs text-slate-500 transition-all duration-1000 ease-in-out",
                 isVisible ? "translate-x-0 opacity-100" : "translate-x-9 opacity-0"
               )}
-              style={{ transitionDelay: `${(index+1) * 0.15}s` }}
+              style={{ transitionDelay: `${( index + 1 ) * 0.15}s` }}
             >
               {shortRelativeTime( date )}
             </p>
@@ -56,9 +56,9 @@ export default function Timeline ( { points = [] } )
               key={index}
               className={cn(
                 "text-xs text-slate-500 transition-all duration-1000 ease-in-out transform",
-                isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                isVisible ? "-translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
               )}
-              style={{ transitionDelay: `${index * 0.15}s` }}
+              style={{ transitionDelay: `${index * 0.30}s` }}
             >
               {name}
             </p>
