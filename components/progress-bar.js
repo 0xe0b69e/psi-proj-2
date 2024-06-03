@@ -5,6 +5,11 @@ import { useState, useRef, useEffect } from "react";
 import { Intersecting } from "@/components/intersecting";
 import { percentage as calcPercentage } from "@/lib/meth";
 
+/**
+ * @param progress {{percentage: number, color: string, name: string}}
+ * @param index {number}
+ * @returns {JSX.Element}
+ */
 export default function ProgressBar ( { progress, index } )
 {
   const [ isVisible, setIsVisible ] = useState( false );
@@ -70,8 +75,10 @@ export default function ProgressBar ( { progress, index } )
             ref={progressBarRef}
             className={cn(
               "h-full rounded-l-md transition-all duration-700",
-              progress.percentage === 100 && "rounded-r-md",
-              progress.percentage === 99 && "rounded-r-sm"
+
+              // `duration-0` is for instant rounding
+              animationPercentage === 100 && "rounded-r-md duration-0",
+              animationPercentage === 99 && "rounded-r-sm duration-0"
             )}
             style={{ width: `${percentage}%`, background: progress.color }}
           />

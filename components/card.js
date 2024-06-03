@@ -22,7 +22,7 @@ export const CardHeader = ( { children, className } ) => (
 
 export const CardFooter = ( { children, className } ) => (
   <div className={cn(
-    "h-14 -m-5 w-[calc(100%+2.5rem)]",
+    "h-14 -m-5 w-[calc(100%+2.5rem)] bottom-0",
     "bg-gray-300/50 dark:bg-gray-900/25 border-gray-300 dark:border-gray-900/75",
     "rounded-b-md border-t-[1px]",
     "flex items-center",

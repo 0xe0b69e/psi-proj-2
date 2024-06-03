@@ -8,6 +8,7 @@ import { CircularButton } from "@/components/circular-button";
 import { ChevronRightIcon, DotsVerticalIcon } from "@radix-ui/react-icons";
 import ProgressBar from "@/components/progress-bar";
 import Link from "next/link";
+import Timeline from "@/components/timeline";
 
 export default function Page ()
 {
@@ -17,6 +18,41 @@ export default function Page ()
     { name: "Customer Database", percentage: 60, color: "#0061f2" },
     { name: "Payout Details", percentage: 80, color: "#00cfd5" },
     { name: "Account Setup", percentage: 100, color: "#00ac69" },
+  ];
+
+  const now = new Date();
+  const activity = [
+    {
+      date: new Date( now.getTime() - 27 * 60 * 1000 ),
+      color: "#00ac69",
+      name: "New order placed! Order #2912 has been successfully placed."
+    }, // 27 min ago
+    {
+      date: new Date( now.getTime() - 58 * 60 * 1000 ),
+      color: "#0061f2",
+      name: "Your weekly report has been generated and is ready to view."
+    }, // 58 min ago
+    {
+      date: new Date( now.getTime() - 2 * 60 * 60 * 1000 ),
+      color: "#6900c7",
+      name: "New user Valerie Luna has registered"
+    }, // 2 hours ago
+    { date: new Date( now.setDate( now.getDate() - 1 ) ), color: "#f4a100", name: "Server activity monitor alert" }, // 1 day ago
+    {
+      date: new Date( now.setDate( now.getDate() - 1 ) ),
+      color: "#00ac69",
+      name: "New order placed! Order #2911 has been successfully placed."
+    }, // 1 day ago
+    {
+      date: new Date( now.setDate( now.getDate() - 1 ) ),
+      color: "#6900c7",
+      name: "Details for Marketing and Planning Meeting have been updated."
+    }, // 1 day ago
+    {
+      date: new Date( now.setDate( now.getDate() - 2 ) ),
+      color: "#00ac69",
+      name: "New order placed! Order #2910 has been successfully placed."
+    }, // 2 days ago
   ];
 
   return (
@@ -44,18 +80,15 @@ export default function Page ()
             <Image src={AtWork} alt="at work" className="mt-6 max-w-[28rem]" />
           </Card>
           <div className="flex flex-col xl:flex-row 2xl+:w-[66%] xl:space-x-6 max-xl:space-y-6">
-            <Card className="w-full 2xl+:w-[50%] p-5">
-              <div className={cn(
-                "h-14 -m-5 mb-5 w-[calc(100%+2.5rem)]",
-                "bg-gray-300/50 dark:bg-gray-900/25 border-gray-300 dark:border-gray-900/75",
-                "rounded-t-md border-b-[1px]",
-                "flex items-center justify-between px-5",
-              )}>
+            <Card className="w-full 2xl+:w-[50%] p-5 h-full">
+              <CardHeader className="justify-between px-5">
                 <p className="text-lg text-primary-lighter">Recent Activity</p>
                 <CircularButton>
                   <DotsVerticalIcon />
                 </CircularButton>
-              </div>
+              </CardHeader>
+
+              <Timeline points={activity} />
             </Card>
             <Card className="w-full 2xl+:w-[50%] p-5">
               <CardHeader className="justify-between px-5">

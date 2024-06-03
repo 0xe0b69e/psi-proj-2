@@ -57,7 +57,7 @@ export default function Matrix({ className, ...props }) {
   }, []);
 
   return <canvas {...props} ref={canvasRef} id="matrix" className={cn(
-    "fixed inset-0 z-0 bg-black w-screen h-screen",
+    "absolute inset-0 z-0 bg-black w-screen h-screen",
     className
   )} />;
 }
