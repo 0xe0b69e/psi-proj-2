@@ -19,7 +19,7 @@ export default function Timeline ( { points = [] } )
       onHide={() => setIsVisible( false )}
     >
       <div className="flex flex-row w-full space-x-5">
-        <div className="flex flex-col items-end space-y-8">
+        <div className="flex flex-col items-end space-y-8 w-12">
           {points.map( ( { date }, index ) => (
             <p
               key={index}
@@ -35,15 +35,15 @@ export default function Timeline ( { points = [] } )
         </div>
         <div
           className={cn(
-            "flex flex-col w-1 bg-gray-100 dark:bg-slate-700/25 items-center",
-            isVisible && "space-y-[2.43rem]"
+            "flex flex-col w-1 bg-gray-100 dark:bg-slate-700/25 items-center pt-0.5",
+            isVisible && "space-y-[2.39rem]"
           )}
         >
           {points.map( ( { color }, index ) => (
             <span
               key={index}
               className={cn(
-                "w-2.5 h-2.5 rounded-full transition-all duration-1000 ease-in-out",
+                "rounded-full transition-all duration-1000 ease-in-out w-2.5 h-2.5",
                 isVisible ? "opacity-100" : "opacity-0"
               )}
               style={{ background: color }}
