@@ -25,7 +25,7 @@ export default function Timeline ( { points = [] } )
         <tbody>
         {points.map( ( { color, name, date }, index ) => (
           <tr key={index} className="text-xs">
-            <td className="p-2 items-center">
+            <td className="p-4 pr-2 items-center">
               <p
                 className={cn(
                   "text-end text-nowrap transition-all duration-1000 ease-in-out",
@@ -36,7 +36,7 @@ export default function Timeline ( { points = [] } )
                 {shortRelativeTime( date )}
               </p>
             </td>
-            <td className="p-2 h-full items-center relative">
+            <td className="px-2 h-full items-center relative">
               <div
                 className={cn(
                   "w-2.5 h-2.5 rounded-full transition-all duration-1000 ease-in-out z-20 relative",
@@ -53,7 +53,7 @@ export default function Timeline ( { points = [] } )
                 }}
               />
             </td>
-            <td className="p-2">
+            <td className="px-2">
               <p
                 className={cn(
                   "transition-all duration-1000 ease-in-out",
