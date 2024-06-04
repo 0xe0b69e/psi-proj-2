@@ -5,11 +5,13 @@ import AtWork from "@/public/at-work.svg";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { CircularButton } from "@/components/circular-button";
-import { CalendarIcon, ChevronRightIcon, DotsVerticalIcon } from "@radix-ui/react-icons";
+import { CalendarIcon, CheckboxIcon, ChevronRightIcon, DotsVerticalIcon } from "@radix-ui/react-icons";
 import ProgressBar from "@/components/progress-bar";
 import Link from "next/link";
 import Timeline from "@/components/timeline";
 import ReportCard from "@/components/report-card";
+import { IoCash } from "react-icons/io5";
+import BarChart from "@/components/bar-chart";
 
 export default function Page ()
 {
@@ -62,9 +64,44 @@ export default function Page ()
       icon: <CalendarIcon />,
       color: "#0061f2",
       value: 40000,
+      prefix: "$",
       footerText: "View Report",
       url: "#"
+    },
+    {
+      text: "Earnings (Annual)",
+      icon: <IoCash />,
+      color: "#f4a100",
+      value: 215000,
+      prefix: "$",
+      footerText: "View Report",
+      url: "#"
+    },
+    {
+      text: "Task Completion",
+      icon: <CheckboxIcon />,
+      color: "#00ac69",
+      value: 24,
+      footerText: "View Tasks",
+      url: "#"
+    },
+    {
+      text: "Pending Requests",
+      icon: <CalendarIcon />,
+      color: "#e81500",
+      value: 17,
+      footerText: "View Requests",
+      url: "#"
     }
+  ];
+  
+  const data = [
+    { label: 'January', value: 5000 },
+    { label: 'February', value: 7000 },
+    { label: 'March', value: 8000 },
+    { label: 'April', value: 10000 },
+    { label: 'May', value: 12000 },
+    { label: 'June', value: 15000 },
   ];
   
   return (
@@ -130,6 +167,7 @@ export default function Page ()
         <div className="grid grid-cols-2 2xl+:grid-cols-4 w-full gap-6">
           {reports.map( ( report, index ) => <ReportCard key={index} {...report} />)}
         </div>
+        <BarChart data={data} />
       </article>
     </main>
   );

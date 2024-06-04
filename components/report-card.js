@@ -13,6 +13,7 @@ import { useSpring, animated } from "react-spring";
  * @param icon {JSX.Element}
  * @param color {string}
  * @param value {number}
+ * @param prefix {string}
  * @param className {string | undefined}
  * @param footerText {string}
  * @param url {string}
@@ -23,6 +24,7 @@ export default function ReportCard ({
   icon,
   color,
   value,
+  prefix,
   className,
   footerText,
   url
@@ -51,7 +53,7 @@ export default function ReportCard ({
                 {text}
               </p>
               <animated.p className="text-2xl">
-                {spring.val.to(val => `$${val.toLocaleString("en-US")}`)}
+                {spring.val.to(val => `${prefix ?? ""}${val.toFixed(0).toLocaleString("en-US")}`)}
               </animated.p>
             </div>
             {cloneElement(icon, { className: "w-14 h-14 text-white/60" })}
