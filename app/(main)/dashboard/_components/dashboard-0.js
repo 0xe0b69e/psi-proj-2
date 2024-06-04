@@ -5,10 +5,11 @@ import AtWork from "@/public/at-work.svg";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { CircularButton } from "@/components/circular-button";
-import { ChevronRightIcon, DotsVerticalIcon } from "@radix-ui/react-icons";
+import { CalendarIcon, ChevronRightIcon, DotsVerticalIcon } from "@radix-ui/react-icons";
 import ProgressBar from "@/components/progress-bar";
 import Link from "next/link";
 import Timeline from "@/components/timeline";
+import ReportCard from "@/components/report-card";
 
 export default function Page ()
 {
@@ -19,7 +20,7 @@ export default function Page ()
     { name: "Payout Details", percentage: 80, color: "#00cfd5" },
     { name: "Account Setup", percentage: 100, color: "#00ac69" },
   ];
-
+  
   const now = new Date();
   const activity = [
     {
@@ -54,7 +55,18 @@ export default function Page ()
       name: "New order placed! Order #2910 has been successfully placed."
     }, // 2 days ago
   ];
-
+  
+  const reports = [
+    {
+      text: "Earnings (Monthly)",
+      icon: <CalendarIcon />,
+      color: "#0061f2",
+      value: 40000,
+      footerText: "View Report",
+      url: "#"
+    }
+  ];
+  
   return (
     <main className="relative overflow-x-hidden h-full w-full bg-background dark:bg-background-dark transition-all">
       <header
@@ -79,31 +91,33 @@ export default function Page ()
             </div>
             <Image src={AtWork} alt="at work" className="mt-6 max-w-[28rem]" />
           </Card>
-          <div className="flex flex-col xl:flex-row 2xl+:w-[66%] xl:space-x-6 max-xl:space-y-6">
-            <Card className="w-full 2xl+:w-[50%] p-5 h-full">
+          <div className="grid grid-cols-1 xl:grid-cols-2 w-full xl:gap-6 max-xl:gap-6">
+            <Card className="w-full 2xl+:w-full">
               <CardHeader className="justify-between px-5">
                 <p className="text-lg text-primary-lighter">Recent Activity</p>
                 <CircularButton>
                   <DotsVerticalIcon />
                 </CircularButton>
               </CardHeader>
-
-              <Timeline points={activity} />
+              
+              <div className="p-5">
+                <Timeline points={activity} />
+              </div>
             </Card>
-            <Card className="w-full 2xl+:w-[50%] p-5">
+            <Card className="w-full 2xl+:w-full">
               <CardHeader className="justify-between px-5">
                 <p className="text-lg text-primary-lighter">Progress Tracker</p>
                 <CircularButton>
                   <DotsVerticalIcon />
                 </CircularButton>
               </CardHeader>
-
-              <div className="flex flex-col space-y-4 mb-10">
+              
+              <div className="flex flex-col space-y-4 mb-10 p-5">
                 {progress.map( ( progress, index ) => (
                   <ProgressBar key={index} progress={progress} index={index} />
                 ) )}
               </div>
-
+              
               <Link href="#">
                 <CardFooter className="justify-between px-5">
                   <p className="text-sm">Visit Task Center</p>
@@ -113,19 +127,8 @@ export default function Page ()
             </Card>
           </div>
         </div>
-        <div className="grid grid-cols-2 w-full gap-6">
-          <Card className="w-full bg-blue-600 dark:bg-blue-600">
-
-          </Card>
-          <Card className="w-full bg-yellow-500 dark:bg-yellow-500">
-
-          </Card>
-          <Card className="w-full bg-emerald-500 dark:bg-emerald-500">
-
-          </Card>
-          <Card className="w-full bg-red-600 dark:bg-red-600">
-
-          </Card>
+        <div className="grid grid-cols-2 2xl+:grid-cols-4 w-full gap-6">
+          {reports.map( ( report, index ) => <ReportCard key={index} {...report} />)}
         </div>
       </article>
     </main>
