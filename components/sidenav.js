@@ -15,7 +15,7 @@ export default function Sidenav ( { visible, toggleSideNav } )
     <>
       <div
         className={cn(
-          "w-screen h-screen absolute bg-black transition-colors lg:hidden z-30",
+          "w-screen h-screen fixed bg-black transition-colors lg:hidden z-40 pointer-events-none",
           visible ? "bg-black/50" : "hidden"
         )}
         onClick={( e ) =>
@@ -25,7 +25,7 @@ export default function Sidenav ( { visible, toggleSideNav } )
         }}
       />
       <div className={cn(
-        "h-screen w-[240px] shadow-lg pt-[85px] pl-4 flex flex-col space-y-2 z-40 transition-all fixed",
+        "h-screen w-[240px] shadow-lg pt-[85px] pl-4 flex flex-col space-y-2 z-50 transition-all fixed",
         visible ? "translate-x-0" : "-translate-x-full",
         "bg-foreground dark:bg-foreground-dark"
       )}>

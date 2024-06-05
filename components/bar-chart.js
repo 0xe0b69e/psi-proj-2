@@ -22,9 +22,9 @@ export default function BarChart ( { data } )
       onVisible={() => setIsVisible( true )}
       onHide={() => setIsVisible( false )}
     >
-      <div className="w-full h-full flex flex-col text-xs px-8 py-5">
+      <div className="w-full h-full flex flex-col text-xs p-2">
         <div className="flex flex-row">
-          <div className="flex flex-col space-y-8 text-black/50 dark:text-white/50 text-end w-10">
+          <div className="flex flex-col space-y-8 text-black/50 dark:text-white/50 text-end">
             {Array.from( { length: 6 }, ( _, i ) => (
               <div key={i} className="relative">
                 <p className="z-20 relative">{( ( maxValue / 5 ) * ( 5 - i ) ).toFixed( 0 )}</p>

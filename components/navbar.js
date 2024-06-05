@@ -24,7 +24,7 @@ export default function Navbar ( { toggleSideNav } )
 
   return (
     <nav className={cn(
-      "fixed w-full flex justify-between px-4 items-center h-14 shadow-lg z-50",
+      "fixed w-full flex justify-between px-4 items-center h-14 shadow-lg z-[1000]",
       "bg-foreground dark:bg-foreground-dark",
     )}>
       <div className="flex flex-row h-full items-center space-x-2">
