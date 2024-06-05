@@ -95,7 +95,7 @@ export default function Page ()
     }
   ];
   
-  const data = [
+  const barChartData = [
     { label: 'January', value: 5000 },
     { label: 'February', value: 7000 },
     { label: 'March', value: 8000 },
@@ -167,7 +167,18 @@ export default function Page ()
         <div className="grid grid-cols-2 2xl+:grid-cols-4 w-full gap-6">
           {reports.map( ( report, index ) => <ReportCard key={index} {...report} />)}
         </div>
-        <BarChart data={data} />
+        <div className="grid gap-6 grid-cols-1 xl:grid-cols-2">
+          <Card className="w-full">
+            <div className="w-full h-full p-5">
+
+            </div>
+          </Card>
+          <Card className="w-full">
+            <div className="w-full h-full p-5">
+              <BarChart data={barChartData} />
+            </div>
+          </Card>
+        </div>
       </article>
     </main>
   );

@@ -1,38 +1,47 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from 'react';
+/**
+ *
+ * @param data {{label: string, value: number}[]}
+ * @returns {JSX.Element}
+ */
+export default function BarChart({ data }) {
+  data = data.sort((a, b) => b.value - a.value);
+  const values = data.map((item) => item.value);
+  if (!values.includes(0)) values.push(0);
+  const maxValue = Math.max(...values);
 
-const BarChart = ({ data }) => {
-  const canvasRef = useRef(null);
-  
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    
-    const chartHeight = 400;
-    const chartWidth = 600;
-    const barWidth = 40;
-    const barGap = 20;
-    const maxValue = Math.max(...data.map(item => item.value));
-    const scaleY = chartHeight / maxValue;
-    
-    ctx.clearRect(0, 0, chartWidth, chartHeight);
-    
-    data.forEach((item, index) => {
-      const barHeight = item.value * scaleY;
-      ctx.fillStyle = 'blue';
-      ctx.fillRect(index * (barWidth + barGap), chartHeight - barHeight, barWidth, barHeight);
-    });
-    
-    ctx.fillStyle = 'black';
-    ctx.font = '14px Arial';
-    data.forEach((item, index) => {
-      ctx.fillText(item.label, index * (barWidth + barGap), chartHeight - 5);
-      ctx.fillText(`$${item.value.toLocaleString()}`, index * (barWidth + barGap), chartHeight - item.value * scaleY - 5);
-    });
-  }, [data]);
-  
-  return <canvas ref={canvasRef} width="600" height="400"></canvas>;
-};
-
-export default BarChart;
+  return (
+    <div className="w-full h-full flex flex-col text-xs px-8 py-5">
+      <div className="flex flex-row">
+        <div className="flex flex-col space-y-8 text-black/50 dark:text-white/50 text-end w-10">
+          {Array.from({ length: 6 }, (_, i) => (
+            <div key={i} className="relative">
+              <p className="z-20 relative">{((maxValue / 5) * (5 - i)).toFixed(0)}</p>
+              <span
+                className="absolute w-10 bg-black/25 dark:bg-white/25 h-px z-10"
+                style={{
+                  top: `50%`,
+                  transform: "translate(0.75rem, -50%)",
+                }}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="flex flex-row pl-6 w-full h-full items-end justify-between py-[7px]">
+          {data.map(({ value, label }, index) => (
+            <div
+              key={index}
+              className="w-10 bg-sky-400 flex flex-col items-center justify-end z-20"
+              style={{ height: `${(value / maxValue) * 100}%` }}
+            >
+              <p className="-mb-5">
+                {label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
