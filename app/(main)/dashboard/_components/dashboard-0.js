@@ -104,10 +104,10 @@ export default function Page() {
   ];
   
   return (
-    <main className="relative overflow-x-hidden w-full bg-background dark:bg-background-dark transition-all">
+    <main className="overflow-x-hidden w-full bg-background dark:bg-background-dark transition-all relative">
       <header className="top-0 left-0 right-0 bg-gradient-to-r from-primary to-secondary py-10 h-64 z-0 w-full" />
-      <article className="z-10 w-full px-6 xl:px-[5vw] -mt-20 flex flex-col space-y-6">
-        <div className="relative flex flex-col 2xl+:flex-row 2xl+:space-x-6 max-2xl+:space-y-6 w-full">
+      <article className="z-10 w-full px-6 xl:px-[5vw] -mt-20 flex flex-col space-y-6 relative mb-20">
+        <div className="flex flex-col 2xl+:flex-row 2xl+:space-x-6 max-2xl+:space-y-6 w-full relative">
           <Card className={cn("p-12 w-full 2xl+:w-[33%] flex items-center", "max-xl:flex-col xl:flex-row 2xl+:flex-col", "max-xl:justify-normal xl:justify-between 2xl+:justify-normal")}>
             <div className="max-xl:text-center 2xl+:text-center">
               <h1 className="text-primary-lighter text-xl font-bold mb-2">Welcome to SB Admin Pro!</h1>
