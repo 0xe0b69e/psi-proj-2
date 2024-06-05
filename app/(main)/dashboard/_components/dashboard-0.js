@@ -174,6 +174,13 @@ export default function Page ()
             </div>
           </Card>
           <Card className="w-full">
+            <CardHeader className="justify-between px-5">
+              <p className="text-lg text-primary-lighter">Monthly Revenue</p>
+              <CircularButton>
+                <DotsVerticalIcon />
+              </CircularButton>
+            </CardHeader>
+            
             <div className="w-full h-full p-5">
               <BarChart data={barChartData} />
             </div>
