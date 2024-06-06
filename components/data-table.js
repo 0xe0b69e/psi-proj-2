@@ -15,21 +15,36 @@ import { CircularButton } from "@/components/circular-button";
 
 export default function DataTable ( { data } )
 {
-  const length = data.length;
   const keys = Object.keys( data[ 0 ] );
   
   const [ page, setPage ] = useState( 0 );
   const [ entriesPerPage, setEntriesPerPage ] = useState( 10 );
   const [ sortedBy, sortBy ] = useState( keys[ 0 ] );
   const [ sortDirection, setSortDirection ] = useState( 0 ); // 0 = asc, 1 = desc
+  const [searchQuery, setSearchQuery] = useState( "" );
   
-  data = splitArray( data.sort( ( a, b ) =>
+  data = data.map( ( elementOrSmthIdk ) =>
+  {
+    /* Assuming someone will not have great idea of putting some random object on one of array object's keys */
+    // Fast as fuck boiii
+    for ( let key in elementOrSmthIdk )
+      if ( typeof elementOrSmthIdk[ key ] === "object" )
+        elementOrSmthIdk[ key ] = dayjs( elementOrSmthIdk[ key ] ).format( "YYYY/MM/DD" );
+    return elementOrSmthIdk;
+  } );
+  if (searchQuery) data = data.filter((element) => {
+    return Object.values(element).some(value =>
+      `${value}`.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  });
+  data = data.sort( ( a, b ) =>
   {
     // Fuck you Brendan Eich
     if ( typeof a[ sortedBy ] === "string" && typeof b[ sortedBy ] === "string" ) // <-- What the fuck even is that
       // Why do I need to do all of this just to avoid TypeError
     {
-      if (!a[sortedBy].startsWith("$")) {
+      if ( !a[ sortedBy ].startsWith( "$" ) )
+      {
         if ( a[ sortedBy ] < b[ sortedBy ] )
           return sortDirection === 0 ? -1 : 1;
         else if ( a[ sortedBy ] > b[ sortedBy ] )
@@ -40,39 +55,51 @@ export default function DataTable ( { data } )
         // TypeError: b[sortedBy].startsWith is not a function
         // I fUcKiNg SwEaR tO gOd
       // PS. Took only 10 minutes :) (Fuck vanilla JS)
-      else if (a[sortedBy].startsWith("$") && b[sortedBy].startsWith("$"))
+      else if ( a[ sortedBy ].startsWith( "$" ) && b[ sortedBy ].startsWith( "$" ) )
       {
-        a[sortedBy] = Number(a[sortedBy].replace("$", ""))
-        b[sortedBy] = Number(b[sortedBy].replace("$", ""))
+        a[ sortedBy ] = Number( a[ sortedBy ].replace( "$", "" ) );
+        b[ sortedBy ] = Number( b[ sortedBy ].replace( "$", "" ) );
       }
     }
     
     return sortDirection === 0 ? a[ sortedBy ] - b[ sortedBy ] : b[ sortedBy ] - a[ sortedBy ];
-  } ), entriesPerPage )[ page ];
+  } );
+  const length = data.length;
+  data = splitArray( data, entriesPerPage )[ page ];
   
   // Pagination garbage
-  const totalPages = Math.ceil(length / entriesPerPage);
-  const handlePageChange = (newPage) => {
-    if (newPage >= 0 && newPage < totalPages)
-      setPage(newPage);
+  const totalPages = Math.ceil( length / entriesPerPage );
+  const handlePageChange = ( newPage ) =>
+  {
+    if ( newPage >= 0 && newPage < totalPages )
+      setPage( newPage );
   };
-  const getPageNumbers = () => {
-    let start = Math.max(page - 1, 1);
-    let end = Math.min(start + 5, totalPages);
-    start = Math.max(end - 5, 1);
-    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+  const getPageNumbers = () =>
+  {
+    let start = Math.max( page - 1, 1 );
+    let end = Math.min( start + 5, totalPages );
+    start = Math.max( end - 5, 1 );
+    return Array.from( { length: end - start + 1 }, ( _, i ) => start + i );
   };
   
   return (
     <div className="w-full h-full flex flex-col space-y-4">
-      <div className="w-full items-center flex flex-row space-x-4">
+      <div className="w-full items-center flex justify-between">
+        <div className="items-center flex flex-row space-x-4">
+          <input
+            defaultValue={entriesPerPage}
+            className="w-20 p-3 px-4 border-gray-300/75 dark:border-slate-700/75 border-[1px] rounded-md bg-transparent"
+            type="number"
+            onInput={( event ) => setEntriesPerPage( Number( event.currentTarget.value ) )}
+          />
+          <p>entries per page</p>
+        </div>
         <input
-          defaultValue={entriesPerPage}
-          className="w-20 p-3 px-4 border-gray-300/75 dark:border-slate-700/75 border-[1px] rounded-md bg-transparent"
-          type="number"
-          onInput={(event) => setEntriesPerPage(Number(event.currentTarget.value))}
+          defaultValue={searchQuery}
+          className="w-52 p-3 px-4 border-gray-300/75 dark:border-slate-700/75 border-[1px] rounded-md bg-transparent"
+          onInput={( event ) => setSearchQuery(event.currentTarget.value)}
+          placeholder="Search..."
         />
-        <p>entries per page</p>
       </div>
       <table className="w-full h-full">
         <tbody>
@@ -118,7 +145,7 @@ export default function DataTable ( { data } )
           )}>
             {keys.map( key => (
               <td key={key} className="px-3 py-2 border-[1px] border-gray-300/75 dark:border-slate-700/75">
-                {typeof row[ key ] === "object" ? dayjs( row[ key ] ).format( "YYYY/MM/DD" ) : row[ key ]}
+                {row[ key ]}
               </td>
             ) )}
             <td className="px-3 py-2 border-[1px] border-gray-300/75 dark:border-slate-700/75">
@@ -137,10 +164,10 @@ export default function DataTable ( { data } )
         </tbody>
       </table>
       <div className="flex w-full justify-between">
-        <p>Showing {(page * entriesPerPage) + 1} to {Math.min((page + 1) * entriesPerPage, length)} of {length} entries</p>
+        <p>Showing {( page * entriesPerPage ) + 1} to {Math.min( ( page + 1 ) * entriesPerPage, length )} of {length} entries</p>
         <div className="flex flex-row -space-x-[1px] border-gray-300/75 dark:border-slate-700/75 rounded-md">
           <button
-            onClick={() => handlePageChange(page - 1)} disabled={page === 0}
+            onClick={() => handlePageChange( page - 1 )} disabled={page === 0}
             className={cn(
               "disabled:opacity-50 disabled:cursor-not-allowed border-[1px] border-gray-300/75 dark:border-slate-700/75",
               "w-8 h-8 flex justify-center items-center text-primary-lighter"
@@ -148,10 +175,10 @@ export default function DataTable ( { data } )
           >
             <CaretLeftIcon />
           </button>
-          {getPageNumbers().map((pageNumber) => (
+          {getPageNumbers().map( ( pageNumber ) => (
             <button
               key={pageNumber}
-              onClick={() => handlePageChange(pageNumber - 1)}
+              onClick={() => handlePageChange( pageNumber - 1 )}
               className={cn(
                 "border-[1px] border-gray-300/75 dark:border-slate-700/75",
                 "w-8 h-8 flex justify-center items-center text-primary-lighter",
@@ -160,9 +187,9 @@ export default function DataTable ( { data } )
             >
               {pageNumber}
             </button>
-          ))}
+          ) )}
           <button
-            onClick={() => handlePageChange(page + 1)} disabled={page === totalPages - 1}
+            onClick={() => handlePageChange( page + 1 )} disabled={page === totalPages - 1}
             className={cn(
               "disabled:opacity-50 disabled:cursor-not-allowed border-[1px] border-gray-300/75 dark:border-slate-700/75",
               "w-8 h-8 flex justify-center items-center text-primary-lighter"
