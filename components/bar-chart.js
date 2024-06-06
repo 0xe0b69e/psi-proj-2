@@ -42,11 +42,11 @@ export default function BarChart ( { data } )
               <div key={i} className="relative">
                 <p className="z-20 relative">{( ( maxValue / 5 ) * ( 5 - i ) ).toFixed( 0 )}</p>
                 <span
-                  className="absolute bg-black/10 dark:bg-white/10 h-px z-10"
+                  className="absolute h-px z-10 border-t-[1px] border-black/15 border-dashed"
                   style={{
                     top: `50%`,
                     transform: "translate(0.75rem, -50%)",
-                    width: width
+                    width: width,
                   }}
                 />
               </div>
