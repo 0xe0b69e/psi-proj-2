@@ -12,15 +12,9 @@ import Timeline from "@/components/timeline";
 import ReportCard from "@/components/report-card";
 import BarChart from "@/components/bar-chart";
 import LineChart from "@/components/line-chart";
-import { activity, barChartData, lineChartData, progress, reports } from "@/lib/data";
-import * as PropTypes from "prop-types";
-import { Button } from "@/components/ui/button";
+import { activity, barChartData, lineChartData, personnel, progress, reports } from "@/lib/data";
+import DataTable from "@/components/data-table";
 
-Button.propTypes = {
-  onClick: PropTypes.func,
-  variant: PropTypes.string,
-  children: PropTypes.node
-};
 export default function Page() {
   return (
     <main className="overflow-x-hidden w-full bg-background dark:bg-background-dark transition-all">
@@ -104,7 +98,7 @@ export default function Page() {
           </CardHeader>
           
           <div className="w-full h-full p-5">
-          
+            <DataTable data={personnel} />
           </div>
         </Card>
       </article>
