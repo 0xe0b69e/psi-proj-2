@@ -17,7 +17,7 @@ export default function BarChart ( { data } )
   
   const [ isVisible, setIsVisible ] = useState( false );
   
-  data = data.sort( ( a, b ) => a.value - b.value );
+  data = data//.sort( ( a, b ) => a.value - b.value );
   const maxValue = Math.max( ...data.map( ( { value } ) => value ) );
   
   useEffect( () =>

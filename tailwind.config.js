@@ -39,6 +39,7 @@ module.exports = {
         primary: {
           DEFAULT: "#5607dc",
           lighter: "#6f08e6",
+          transparent: "rgba(86, 7, 220, 0.1)",
           foreground: "#ffffff",
         },
         secondary: {

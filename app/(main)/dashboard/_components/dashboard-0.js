@@ -12,6 +12,7 @@ import Timeline from "@/components/timeline";
 import ReportCard from "@/components/report-card";
 import { IoCash } from "react-icons/io5";
 import BarChart from "@/components/bar-chart";
+import LineChart from "@/components/line-chart";
 
 export default function Page() {
   const progress = [
@@ -103,6 +104,21 @@ export default function Page() {
     { label: 'June', value: 15000 },
   ];
   
+  const lineChartData = [
+    { label: "Jan", value: 0 },
+    { label: "Feb", value: 10000 },
+    { label: "Mar", value: 5000 },
+    { label: "Apr", value: 15000 },
+    { label: "May", value: 10000 },
+    { label: "Jun", value: 20000 },
+    { label: "Jul", value: 15000 },
+    { label: "Aug", value: 25000 },
+    { label: "Sep", value: 20000 },
+    { label: "Oct", value: 30000 },
+    { label: "Nov", value: 25000 },
+    { label: "Dec", value: 35000 },
+  ]
+  
   return (
     <main className="overflow-x-hidden w-full bg-background dark:bg-background-dark transition-all relative">
       <header className="top-0 left-0 right-0 bg-gradient-to-r from-primary to-secondary py-10 h-64 z-0 w-full" />
@@ -156,7 +172,14 @@ export default function Page() {
         </div>
         <div className="grid gap-6 grid-cols-1 xl:grid-cols-2">
           <Card className="w-full">
+            <CardHeader className="justify-between px-5">
+              <p className="text-lg text-primary-lighter">Earnings Breakdown</p>
+              <CircularButton>
+                <DotsVerticalIcon />
+              </CircularButton>
+            </CardHeader>
             <div className="w-full h-full p-5">
+              <LineChart data={lineChartData} label="Earnings" />
             </div>
           </Card>
           <Card className="w-full">
