@@ -11,6 +11,7 @@ import { log } from "next/dist/server/typescript/utils";
  */
 export default function BarChart ( { data } )
 {
+  // A little "hacky" approach, but didn't have any better idea
   const ref = useRef( null );
   const [ width, setWidth ] = useState( 0 );
   
@@ -51,7 +52,7 @@ export default function BarChart ( { data } )
               </div>
             ) )}
           </div>
-          <div className="flex flex-row pl-6 w-full h-full items-end justify-between py-[8px]" ref={ref}>
+          <div className="flex flex-row pl-6 w-full h-full items-end justify-between py-[7px]" ref={ref}>
             {data.map( ( { value, label }, index ) => (
               <div
                 key={index}
