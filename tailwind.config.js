@@ -18,6 +18,7 @@ module.exports = {
         "2xl+": "1500px",
         "2xl": "1400px",
         "xl": "1200px",
+        "lg": "1024px",
         "sm": "575px",
       },
       colors: {

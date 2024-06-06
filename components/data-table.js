@@ -88,7 +88,7 @@ export default function DataTable ( { data } )
         <div className="items-center flex flex-row space-x-4">
           <input
             defaultValue={entriesPerPage}
-            className="w-20 p-3 px-4 border-gray-300/75 dark:border-slate-700/75 border-[1px] rounded-md bg-transparent"
+            className="w-20 p-3 lg:px-4 border-gray-300/75 dark:border-slate-700/75 border-[1px] rounded-md bg-transparent"
             type="number"
             onInput={( event ) => setEntriesPerPage( Number( event.currentTarget.value ) )}
           />
@@ -96,7 +96,7 @@ export default function DataTable ( { data } )
         </div>
         <input
           defaultValue={searchQuery}
-          className="w-52 p-3 px-4 border-gray-300/75 dark:border-slate-700/75 border-[1px] rounded-md bg-transparent"
+          className="w-52 p-3 lg:px-4 border-gray-300/75 dark:border-slate-700/75 border-[1px] rounded-md bg-transparent"
           onInput={( event ) => setSearchQuery(event.currentTarget.value)}
           placeholder="Search..."
         />
@@ -108,7 +108,7 @@ export default function DataTable ( { data } )
             <th
               key={key}
               className={cn(
-                "border-[1px] border-gray-300/75 dark:border-slate-700/75 capitalize px-3 py-2 cursor-pointer justify-between",
+                "border-[1px] border-gray-300/75 dark:border-slate-700/75 capitalize lg:px-3 lg:py-2 cursor-pointer justify-between",
                 "select-none"
               )}
               onClick={() =>
@@ -134,7 +134,7 @@ export default function DataTable ( { data } )
             </th>
           ) )}
           <th
-            className="border-[1px] border-gray-300/75 dark:border-slate-700/75 capitalize px-3 py-2 text-start select-none">
+            className="border-[1px] border-gray-300/75 dark:border-slate-700/75 capitalize lg:px-3 lg:py-2 text-start select-none">
             actions
           </th>
         </tr>
@@ -144,11 +144,11 @@ export default function DataTable ( { data } )
             index % 2 === 0 ? "bg-gray-100 dark:bg-slate-800" : ""
           )}>
             {keys.map( key => (
-              <td key={key} className="px-3 py-2 border-[1px] border-gray-300/75 dark:border-slate-700/75">
+              <td key={key} className="lg:px-3 lg:py-2 border-[1px] border-gray-300/75 dark:border-slate-700/75">
                 {row[ key ]}
               </td>
             ) )}
-            <td className="px-3 py-2 border-[1px] border-gray-300/75 dark:border-slate-700/75">
+            <td className="lg:px-3 lg:py-2 border-[1px] border-gray-300/75 dark:border-slate-700/75">
               <div className="flex flex-row space-x-2 w-full h-full">
                 <CircularButton className="w-7 h-7">
                   <DotsVerticalIcon />
