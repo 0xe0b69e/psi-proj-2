@@ -8,13 +8,14 @@ import Processing from "@/public/processing.svg";
 import Windows from "@/public/windows.svg";
 import Image from "next/image";
 import LineChart from "@/components/line-chart";
-import { activity, lineChartData, people, projects } from "@/data/data";
+import { activity, lineChartData, people, projects, traffic } from "@/data/data";
 import { useState } from "react";
 import { CircularButton } from "@/components/circular-button";
 import ProgressBar from "@/components/progress-bar";
 import TeamSpirit from "@/public/team-spirit.svg"
 import DataReport from "@/public/data-report.svg"
 import Timeline from "@/components/timeline";
+import DoughnutChart from "@/components/doughnut-chart";
 
 export default function Page ()
 {
@@ -96,8 +97,14 @@ export default function Page ()
                   <Timeline points={activity} />
                 </div>
               </Card>
+              
               <Card className="w-full">
-                <p>fdsfs</p>
+                <CardHeader className="px-5">
+                  <p className="text-lg text-primary-lighter">Traffic Sources</p>
+                </CardHeader>
+                <div className="w-full p-5">
+                  <DoughnutChart data={traffic} />
+                </div>
               </Card>
             </div>
           </div>

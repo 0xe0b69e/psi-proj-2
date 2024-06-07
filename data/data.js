@@ -141,3 +141,9 @@ export const projects = [
   { name: "Version Release", percentage: 75, color: "#0061f2" },
   { name: "Product Listings", percentage: 100, color: "#00ac69" },
 ];
+
+export const traffic = [
+  { label: "Direct", value: 55, color: "#007bff" },
+  { label: "Social", value: 15, color: "#6f42c1" },
+  { label: "Referral", value: 30, color: "#28a745" },
+];
