@@ -34,6 +34,8 @@ export default function LineChart ( { data, label } )
   };
   
   const options = {
+    responsive: true,
+    maintainAspectRatio: false,
     scales: {
       y: {
         beginAtZero: true,
@@ -42,15 +44,12 @@ export default function LineChart ( { data, label } )
     plugins: {
       tooltip: {
         callbacks: {
-          label: function ( context )
-          {
+          label: function (context) {
             let label = context.dataset.label || "";
-            if ( label )
-            {
+            if (label) {
               label += ": ";
             }
-            if ( context.parsed.y !== null )
-            {
+            if (context.parsed.y !== null) {
               label += `$${context.parsed.y.toLocaleString()}`;
             }
             return label;

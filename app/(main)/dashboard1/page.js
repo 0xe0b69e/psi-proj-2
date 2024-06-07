@@ -1,15 +1,20 @@
 "use client";
 
-import { Card } from "@/components/card";
+import { Card, CardHeader } from "@/components/card";
 import { ArchiveIcon, BookmarkIcon, LayoutIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
-import BrowserStats from "@/public/browser-stats.svg"
-import Processing from "@/public/processing.svg"
-import Windows from "@/public/windows.svg"
+import BrowserStats from "@/public/browser-stats.svg";
+import Processing from "@/public/processing.svg";
+import Windows from "@/public/windows.svg";
 import Image from "next/image";
+import LineChart from "@/components/line-chart";
+import { lineChartData, people } from "@/lib/data";
+import { useState } from "react";
 
 export default function Page ()
 {
+  const [ tab, setTab ] = useState( 0 );
+  
   return (
     <main className="overflow-x-hidden w-full bg-background dark:bg-background-dark transition-all">
       <header className="top-0 left-0 right-0 bg-gradient-to-r from-primary to-secondary py-10 h-64 z-0 w-full" />
@@ -40,6 +45,54 @@ export default function Page ()
             </div>
             <Image src={Windows} alt="browser stats" className="w-32" />
           </Card>
+        </div>
+        <div className="flex flex-col 2xl+:flex-row 2xl+:space-x-6 max-2xl+:space-y-6 w-full">
+          <div className="w-full 2xl+:w-[67%] flex flex-col space-y-6">
+            <Card className="w-full">
+              <CardHeader className="items-end">
+                <p>fsdfs</p>
+                <p>fsdfs</p>
+                <p>fsdfs</p>
+              </CardHeader>
+              <div className="w-full h-full p-5">
+                {(() => {
+                  switch (tab)
+                  {
+                    case 0:
+                      return <LineChart data={lineChartData} label="Earnings" />
+                    case 1:
+                      return <></>
+                  }
+                })()}
+              </div>
+            </Card>
+          </div>
+          <div className="w-full 2xl+:w-[33%] flex flex-col space-y-6">
+            <Card className="w-full">
+              <CardHeader className="px-5">
+                <p className="text-lg text-primary-lighter">People</p>
+              </CardHeader>
+              <div className="w-full p-5 grid grid-cols-1 gap-5">
+                {people.map(({name, position, avatar}, index) => (
+                  <div key={index} className="flex flex-row items-center space-x-4">
+                    <Image
+                      src={avatar}
+                      alt={`${name}'s avatar`}
+                      width={60}
+                      height={60}
+                      className="rounded-full"
+                    />
+                    <div className="flex flex-col">
+                      <Link href="#" className="hover:underline font-bold">
+                        {name}
+                      </Link>
+                      <p className="text-slate-500 dark:text-slate-400">{position}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </div>
         </div>
       </article>
       <footer className="bottom-0 p-10 justify-between flex">
