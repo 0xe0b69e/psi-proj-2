@@ -5,7 +5,6 @@
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
 import TailwindConfig from "@/tailwind.config";
-import { useState } from "react";
 
 /**
  * @param data {{label: string, value: number}[]}
@@ -14,8 +13,6 @@ import { useState } from "react";
  */
 export default function LineChart ( { data, label } )
 {
-  const [isVisible, setIsVisible] = useState(false);
-  
   const sortedData = data//.sort( ( a, b ) => a.label.localeCompare( b.label ) );
   
   const chartData = {
@@ -29,8 +26,6 @@ export default function LineChart ( { data, label } )
         borderColor: TailwindConfig.theme.extend.colors.primary.DEFAULT,
         pointBackgroundColor: TailwindConfig.theme.extend.colors.primary.lighter,
         pointBorderColor: "#ffffff",
-        //pointHoverBackgroundColor: "#ffffff",
-        //pointHoverBorderColor: TailwindConfig.theme.extend.colors.primary.lighter,
         pointHoverRadius: 5,
         tension: 0.4,
         hitRadius: 100,

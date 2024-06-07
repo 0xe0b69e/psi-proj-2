@@ -12,7 +12,7 @@ import Timeline from "@/components/timeline";
 import ReportCard from "@/components/report-card";
 import BarChart from "@/components/bar-chart";
 import LineChart from "@/components/line-chart";
-import { activity, barChartData, lineChartData, personnel, progress, reports } from "@/lib/data";
+import { activity, barChartData, lineChartData, personnel, progress, reports } from "@/data/data";
 import DataTable from "@/components/data-table";
 
 export default function Page ()

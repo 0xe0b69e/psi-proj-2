@@ -8,7 +8,7 @@ import Processing from "@/public/processing.svg";
 import Windows from "@/public/windows.svg";
 import Image from "next/image";
 import LineChart from "@/components/line-chart";
-import { activity, lineChartData, people, projects } from "@/lib/data";
+import { activity, lineChartData, people, projects } from "@/data/data";
 import { useState } from "react";
 import { CircularButton } from "@/components/circular-button";
 import ProgressBar from "@/components/progress-bar";
