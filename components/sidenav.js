@@ -34,16 +34,16 @@ export default function Sidenav ( { visible, toggleSideNav } )
           title="Dashboards"
           icon={<Cross1Icon />}
           className={cn(
-            path === "/dashboard" && "text-primary-lighter font-bold"
+            path === "/dashboard0" && "text-primary-lighter font-bold"
           )}
         >
           <Link
-            href="/dashboard?type=0"
+            href="/dashboard0"
           >
             <div
               className={cn(
                 "w-full h-[38px]",
-                ( path === "/dashboard" && searchParams.get( "type" ) === "0" ) && "text-primary-lighter font-bold",
+                path === "/dashboard0" && "text-primary-lighter font-bold",
               )}
             >
               <p>Zero</p>
