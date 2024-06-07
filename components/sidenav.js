@@ -34,7 +34,7 @@ export default function Sidenav ( { visible, toggleSideNav } )
           title="Dashboards"
           icon={<Cross1Icon />}
           className={cn(
-            path === "/dashboard0" && "text-primary-lighter font-bold"
+            ["/dashboard0", "/dashboard1"].includes(path) && "text-primary-lighter font-bold"
           )}
         >
           <Link
@@ -47,6 +47,18 @@ export default function Sidenav ( { visible, toggleSideNav } )
               )}
             >
               <p>Zero</p>
+            </div>
+          </Link>
+          <Link
+            href="/dashboard1"
+          >
+            <div
+              className={cn(
+                "w-full h-[38px]",
+                path === "/dashboard1" && "text-primary-lighter font-bold",
+              )}
+            >
+              <p>One</p>
             </div>
           </Link>
         </Item>
