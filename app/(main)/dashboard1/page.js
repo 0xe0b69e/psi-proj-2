@@ -165,12 +165,6 @@ export default function Page ()
           </div>
         </div>
       </article>
-      <footer className="bottom-0 p-10 justify-between flex">
-        <p>Copyright © Someone Somewhere</p>
-        <Link href="#">
-          <p>ToS</p>
-        </Link>
-      </footer>
     </main>
   );
 }
