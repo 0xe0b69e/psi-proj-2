@@ -8,11 +8,13 @@ import Processing from "@/public/processing.svg";
 import Windows from "@/public/windows.svg";
 import Image from "next/image";
 import LineChart from "@/components/line-chart";
-import { lineChartData, people, projects } from "@/lib/data";
+import { activity, lineChartData, people, projects } from "@/lib/data";
 import { useState } from "react";
 import { CircularButton } from "@/components/circular-button";
 import ProgressBar from "@/components/progress-bar";
 import TeamSpirit from "@/public/team-spirit.svg"
+import DataReport from "@/public/data-report.svg"
+import Timeline from "@/components/timeline";
 
 export default function Page ()
 {
@@ -70,6 +72,34 @@ export default function Page ()
                 } )()}
               </div>
             </Card>
+            
+            <Card className="w-full flex flex-col px-16 py-10 items-center justify-center space-y-2">
+              <Image src={DataReport} alt="data report" className="h-40" />
+              <p className="text-lg font-semibold">New reports are here! Generate custom reports now!</p>
+              <p className="text-slate-500 dark:text-slate-400 text-center">
+                Our new report generation system is now online. You can start creating custom reporting for any documents available on your account.
+              </p>
+              <button className="bg-primary-lighter p-3 px-4 text-white rounded-md hover:bg-primary">
+                Get Started
+              </button>
+            </Card>
+            
+            <div className="grid grid-cols-1 2xl+:grid-cols-2 gap-6">
+              <Card className="w-full">
+                <CardHeader className="justify-between px-5">
+                  <p className="text-lg text-primary-lighter">Recent Activity</p>
+                  <CircularButton>
+                    <DotsVerticalIcon />
+                  </CircularButton>
+                </CardHeader>
+                <div className="p-5">
+                  <Timeline points={activity} />
+                </div>
+              </Card>
+              <Card className="w-full">
+                <p>fdsfs</p>
+              </Card>
+            </div>
           </div>
           <div className="w-full 2xl+:w-[33%] flex flex-col space-y-6">
             <Card className="w-full">
@@ -121,7 +151,7 @@ export default function Page ()
               <p className="text-slate-500 dark:text-slate-400 text-center">
                 Upgrade your plan to get access to team collaboration tools.
               </p>
-              <button className="bg-primary-lighter p-3 px-4 text-white rounded-md">
+              <button className="bg-primary-lighter p-3 px-4 text-white rounded-md hover:bg-primary">
                 Upgrade
               </button>
             </Card>
