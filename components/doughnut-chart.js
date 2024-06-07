@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import "chart.js/auto";
@@ -20,9 +22,9 @@ export default function DoughnutChart ( { data } )
     ],
   };
   
-  const config = {
+  const options = {
     responsive: true,
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,
     cutout: "80%",
     plugins: {
       legend: {
@@ -47,9 +49,9 @@ export default function DoughnutChart ( { data } )
   };
   
   return (
-    <div className="max-w-[500px] flex flex-col items-center">
+    <div className="w-full h-full max-w-[500px] max-h-[500px] flex flex-col items-center">
       <div className="relative w-full h-full">
-        <Doughnut data={chartData} options={config} />
+        <Doughnut data={chartData} options={options} />
       </div>
     </div>
   );
