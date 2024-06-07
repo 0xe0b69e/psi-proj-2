@@ -126,7 +126,7 @@ export default function Page ()
           } );
         }}
       >
-        <p className={cn( "font-mono text-2xl select-none", !interacted && "cursor-pointer" )}>
+        <p className={cn( "text-2xl select-none", !interacted && "cursor-pointer" )}>
           Press to continue
         </p>
       </div>
