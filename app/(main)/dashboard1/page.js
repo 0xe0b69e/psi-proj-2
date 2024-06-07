@@ -54,7 +54,7 @@ export default function Page ()
                 <p>fsdfs</p>
                 <p>fsdfs</p>
               </CardHeader>
-              <div className="w-full h-full p-5">
+              <div className="w-full p-5">
                 {(() => {
                   switch (tab)
                   {
