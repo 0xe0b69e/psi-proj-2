@@ -4,15 +4,13 @@ import { useState } from "react";
 import {
   CaretLeftIcon,
   CaretRightIcon,
-  DotsVerticalIcon,
-  TrashIcon,
   TriangleDownIcon,
   TriangleUpIcon
 } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
 import dayjs from "dayjs";
 import { splitArray } from "@/lib/array";
-import { CircularButton } from "@/components/circular-button";
+import { isDate } from "@/lib/types";
 
 export default function DataTable ( { data } )
 {
@@ -27,7 +25,7 @@ export default function DataTable ( { data } )
   data = data.map( ( elementOrSmthIdk ) =>
   {
     for ( let key in elementOrSmthIdk )
-      if ( typeof elementOrSmthIdk[ key ] === "object" )
+      if ( isDate(elementOrSmthIdk[ key ]) )
         elementOrSmthIdk[ key ] = dayjs( elementOrSmthIdk[ key ] ).format( "YYYY/MM/DD" );
     return elementOrSmthIdk;
   } );
@@ -129,10 +127,6 @@ export default function DataTable ( { data } )
                 </div>
               </th>
             ) )}
-            <th
-              className="border-[1px] border-gray-300/75 dark:border-slate-700/75 capitalize lg:px-3 lg:py-2 text-start select-none">
-              actions
-            </th>
           </tr>
           </thead>
           <tbody>
@@ -149,16 +143,6 @@ export default function DataTable ( { data } )
                   {row[ key ]}
                 </td>
               ) )}
-              <td className="lg:px-3 lg:py-2 border-[1px] border-gray-300/75 dark:border-slate-700/75">
-                <div className="flex flex-row space-x-2 w-full h-full">
-                  <CircularButton className="w-7 h-7">
-                    <DotsVerticalIcon />
-                  </CircularButton>
-                  <CircularButton className="w-7 h-7">
-                    <TrashIcon />
-                  </CircularButton>
-                </div>
-              </td>
             </tr>
           ) )}
           </tbody>

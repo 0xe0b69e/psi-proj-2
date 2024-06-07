@@ -20,7 +20,7 @@ export default function Page ()
   return (
     <main className="overflow-x-hidden w-full bg-background dark:bg-background-dark transition-all">
       <header className="top-0 left-0 right-0 bg-gradient-to-r from-primary to-secondary py-10 h-64 z-0 w-full" />
-      {/* TODO: Fix scrolling issue */}
+      {/* TODO: Fix scrolling issue without adding bottom margin of 10000px */}
       <article className="z-10 w-full px-6 xl:px-[5vw] -mt-20 top-20 flex flex-col space-y-6 mb-52">
         <div className="flex flex-col 2xl+:flex-row 2xl+:space-x-6 max-2xl+:space-y-6 w-full">
           <Card
