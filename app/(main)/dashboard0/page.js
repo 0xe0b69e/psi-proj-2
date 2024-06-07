@@ -36,7 +36,7 @@ export default function Page ()
             <Image src={AtWork} alt="at work" className="mt-6 max-w-[28rem]" />
           </Card>
           <div className="grid grid-cols-1 xl:grid-cols-2 w-full xl:gap-6 max-xl:gap-6">
-            <Card className="w-full 2xl+:w-full">
+            <Card className="w-full">
               <CardHeader className="justify-between px-5">
                 <p className="text-lg text-primary-lighter">Recent Activity</p>
                 <CircularButton>
@@ -47,7 +47,7 @@ export default function Page ()
                 <Timeline points={activity} />
               </div>
             </Card>
-            <Card className="w-full 2xl+:w-full">
+            <Card className="w-full">
               <CardHeader className="justify-between px-5">
                 <p className="text-lg text-primary-lighter">Progress Tracker</p>
                 <CircularButton>

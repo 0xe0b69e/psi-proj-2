@@ -1,15 +1,18 @@
 "use client";
 
 import { Card, CardHeader } from "@/components/card";
-import { ArchiveIcon, BookmarkIcon, LayoutIcon } from "@radix-ui/react-icons";
+import { ArchiveIcon, BookmarkIcon, DotsVerticalIcon, LayoutIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import BrowserStats from "@/public/browser-stats.svg";
 import Processing from "@/public/processing.svg";
 import Windows from "@/public/windows.svg";
 import Image from "next/image";
 import LineChart from "@/components/line-chart";
-import { lineChartData, people } from "@/lib/data";
+import { lineChartData, people, projects } from "@/lib/data";
 import { useState } from "react";
+import { CircularButton } from "@/components/circular-button";
+import ProgressBar from "@/components/progress-bar";
+import TeamSpirit from "@/public/team-spirit.svg"
 
 export default function Page ()
 {
@@ -55,15 +58,16 @@ export default function Page ()
                 <p>fsdfs</p>
               </CardHeader>
               <div className="w-full p-5">
-                {(() => {
-                  switch (tab)
+                {( () =>
+                {
+                  switch ( tab )
                   {
                     case 0:
-                      return <LineChart data={lineChartData} label="Earnings" />
+                      return <LineChart data={lineChartData} label="Earnings" />;
                     case 1:
-                      return <></>
+                      return <></>;
                   }
-                })()}
+                } )()}
               </div>
             </Card>
           </div>
@@ -73,8 +77,8 @@ export default function Page ()
                 <p className="text-lg text-primary-lighter">People</p>
               </CardHeader>
               <div className="w-full p-5 grid grid-cols-1 gap-5">
-                {people.map(({name, position, avatar}, index) => (
-                  <div key={index} className="flex flex-row items-center space-x-4">
+                {people.map( ( { name, position, avatar }, index ) => (
+                  <div key={index} className="flex flex-row items-center space-x-4 w-full">
                     <Image
                       src={avatar}
                       alt={`${name}'s avatar`}
@@ -88,9 +92,38 @@ export default function Page ()
                       </Link>
                       <p className="text-slate-500 dark:text-slate-400">{position}</p>
                     </div>
+                    <span className="flex-grow" />
+                    <CircularButton onClick={() =>
+                    {
+                      // TODO
+                    }}>
+                      <DotsVerticalIcon />
+                    </CircularButton>
                   </div>
-                ))}
+                ) )}
               </div>
+            </Card>
+            
+            <Card className="w-full">
+              <CardHeader className="justify-between px-5">
+                <p className="text-lg text-primary-lighter">Progress Tracker</p>
+              </CardHeader>
+              <div className="flex flex-col space-y-4 p-5">
+                {projects.map( ( progress, index ) => (
+                  <ProgressBar key={index} progress={progress} index={index} />
+                ) )}
+              </div>
+            </Card>
+          
+            <Card className="w-full flex flex-col p-16 items-center justify-center space-y-2">
+              <Image src={TeamSpirit} alt="team-spirit" className="max-w-[16.25rem]" />
+              <p className="text-lg font-semibold">Team Access</p>
+              <p className="text-slate-500 dark:text-slate-400 text-center">
+                Upgrade your plan to get access to team collaboration tools.
+              </p>
+              <button className="bg-primary-lighter p-3 px-4 text-white rounded-md">
+                Upgrade
+              </button>
             </Card>
           </div>
         </div>
