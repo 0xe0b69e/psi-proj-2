@@ -43,7 +43,7 @@ export default function Page ()
         );
       }, introTimeouts[ Math.min( Math.round( ( 1 - introScaling ) * 10 ), introTimeouts.length - 1 ) ] );
       else
-        setReady( true );
+        setTimeout( () => setReady( true ), 100 );
     }
     
     if ( isReady )
@@ -87,10 +87,10 @@ export default function Page ()
       {/* "Currently Playing" pop-up */}
       <div
         className={cn(
-        "z-50 fixed right-0 top-4 px-4 py-2 bg-foreground-dark text-white rounded-l-lg flex flex-row space-x-4 items-center",
-        "w-72 duration-1000 ease-in-out cursor-pointer",
-        showPopup ? "translate-x-0" : "translate-x-72"
-      )}
+          "z-50 fixed right-0 top-4 px-4 py-2 bg-foreground-dark text-white rounded-l-lg flex flex-row space-x-4 items-center",
+          "w-72 duration-1000 ease-in-out cursor-pointer",
+          showPopup ? "translate-x-0" : "translate-x-72"
+        )}
         onClick={() => setShowPopup( false )}
       >
         <BsMusicNote className="w-10 h-10" />
@@ -113,15 +113,16 @@ export default function Page ()
           "text-white bg-primary-lighter px-4 py-2 shadow-lg",
           "z-40 duration-75",
           introScaling < 1 && "rounded-lg",
-          !interacted && "cursor-pointer"
+          !interacted && "cursor-pointer",
+          introScaling <= 0 && "rounded-full"
         )}
         style={{ scale: `${introScaling}` }}
         onClick={() =>
         {
           if ( audio ) audio.play().then( () =>
           {
+            if ( !interacted ) setShowPopup( true );
             setInteracted( true );
-            setShowPopup( true );
             setTimeout( () => setShowPopup( false ), 5000 );
           } );
         }}
