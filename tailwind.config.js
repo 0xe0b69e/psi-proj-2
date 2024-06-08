@@ -95,4 +95,7 @@ module.exports = {
     },
   },
   plugins: [ require( "tailwindcss-animate" ) ],
+  corePlugins: {
+    overflowWrap: true,
+  }
 };

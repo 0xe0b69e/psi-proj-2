@@ -74,14 +74,3 @@
       @apply bg-background text-foreground;
     }
   }
-
-@keyframes marquee {
-  0% { top: 110vh; }
-  100% { top: -100vh; }
-}
-
-.marquee {
-  position: fixed;
-  top: 100vh;
-  animation: marquee 120s linear infinite;
-}

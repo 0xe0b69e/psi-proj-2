@@ -7,11 +7,13 @@ import { PiTelegramLogo, PiXLogo } from "react-icons/pi";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { delius } from "@/lib/fonts";
 import { BsMusicNote } from "react-icons/bs";
+import TailwindConfig from "@/tailwind.config";
+import Image from "next/image";
 
 export default function Page ()
 {
   const introTimeouts = useMemo( () => [ 2000, 2000, 1100, 1100, 2200, 2000, 2000, 1100, 1100, 2000 ], [] );
-  const chapterTimeouts = useMemo( () => [ 2000, 2000, 2000, 10660, 0 ], [] ); // TODO: Last index doesn't do shit
+  const chapterTimeouts = useMemo( () => [ 2000, 2000, 2000, 10700, 0 ], [] ); // TODO: Last index doesn't do shit
   
   const [ interacted, setInteracted ] = useState( false ); // Make sure I can play song
   const [ audio, setAudio ] = useState( null ); // Set song
@@ -20,14 +22,24 @@ export default function Page ()
   const [ chapter, setChapter ] = useState( 0 ); // Self-explanatory
   const [ initialAnimationComplete, setInitialAnimationComplete ] = useState( false ); // Avoid delaying on-hover animations
   const [ showPopup, setShowPopup ] = useState( false );
+  const [ didEnd, setEnd ] = useState( false );
   
   useEffect( () =>
   {
     const audio = new Audio( "https://j3rzy.dev/files/AGST%20%20-%20Fights.mp3" );
-    audio.loop = true;
-    audio.volume = 0.5;
+    audio.volume = 1;
+    
+    audio.addEventListener( "play", () =>
+    {
+      if ( !interacted ) setShowPopup( true );
+      setInteracted( true );
+      setTimeout( () => setShowPopup( false ), 5000 );
+    } );
+    
+    audio.addEventListener( "ended", () => setEnd( true ) );
+    
     setAudio( audio );
-  }, [] );
+  }, [ interacted ] );
   
   useEffect( () =>
   {
@@ -105,6 +117,52 @@ export default function Page ()
           </Link>
         </div>
       </div>
+      {/* End screen */}
+      <div className={cn(
+        "fixed w-screen h-screen top-0 left-0 z-20 flex items-center justify-center",
+      )}>
+        <div
+          className={cn(
+            "w-1/2 h-full left-0 top-0 fixed bg-foreground-dark ease-in-out",
+            !didEnd && "-translate-x-full",
+          )}
+          style={{ transitionDuration: "2s", transitionDelay: "0s" }}
+        />
+        <div
+          className={cn(
+            "w-1/2 h-full right-0 top-0 fixed bg-foreground-dark ease-in-out",
+            !didEnd && "translate-x-full",
+          )}
+          style={{ transitionDuration: "2s", transitionDelay: "0.5s" }}
+        />
+        <div className={cn(
+          "text-white flex flex-col z-30 items-center justify-center space-y-3",
+          "ease-in-out transition-all duration-1000",
+          didEnd ? "-translate-y-32 opacity-100" : "opacity-0",
+        )}>
+          <Image
+            src="https://avatars.githubusercontent.com/u/119805198?v=4"
+            alt="Creator's avatar"
+            width={200}
+            height={200}
+            className={cn(
+              "rounded-full",
+              "ease-in-out transition-all duration-1000",
+              didEnd ? "opacity-100" : "opacity-0",
+            )}
+          />
+          <p
+            className={cn(
+              "text-2xl text-sky-400",
+              "ease-in-out transition-all duration-1000",
+              didEnd ? "opacity-100" : "opacity-0",
+            )}
+            style={{ transitionDelay: "1s" }}
+          >
+            @0xe0b69e
+          </p>
+        </div>
+      </div>
       {/* To be able to play music and stuff - "Dramatic intro" or smth */}
       {/* Inspired by https://www.youtube.com/watch?v=GjEImPidK4g's outro */}
       <div
@@ -119,12 +177,7 @@ export default function Page ()
         style={{ scale: `${introScaling}` }}
         onClick={() =>
         {
-          if ( audio ) audio.play().then( () =>
-          {
-            if ( !interacted ) setShowPopup( true );
-            setInteracted( true );
-            setTimeout( () => setShowPopup( false ), 5000 );
-          } );
+          if ( audio ) audio.play();
         }}
       >
         <p className={cn( "text-2xl select-none", !interacted && "cursor-pointer" )}>
@@ -144,126 +197,71 @@ export default function Page ()
         {
           switch ( chapter )
           {
-            case 0:
-              return (
-                <h1 className="text-4xl animate-pulse">
-                  By <span className="font-mono">0xe0b69e</span>
-                </h1>
-              );
-            case 1:
-              return (
-                <h1 className="text-4xl">
-                  With help from <span className="font-mono">Github copilot</span>
-                </h1>
-              );
-            case 2:
-              return (
-                <h1 className="text-4xl">
-                  In <span className="font-mono">JavaScript</span>
-                </h1>
-              );
-            case 3:
-              return (
-                <h1 className="text-4xl">
-                  Using <span className="font-mono">next.js</span>
-                </h1>
-              );
             case 4:
-              audio.volume = 1;
               return (
-                <div className="flex items-center justify-center">
-                  <div className="text-white text-lg tracking-wide flex items-center justify-center">
-                    <p
-                      className="marquee inline-block text-yellow-200 text-4xl font-mono"
-                      style={{
-                        transform: "rotateX(20deg) translateY(25%)",
-                        transformOrigin: "50% 100%",
-                        perspective: "300px",
-                        textShadow: "0px 0px 5px rgba(255, 255, 0, 1)",
-                      }}
-                    >
-                      {/* Yes, this is AI generated */}
-                      Turmoil has engulfed the Galactic Republic.<br />
-                      The taxation of trade routes to outlying<br />
-                      star systems is in dispute. This has<br />
-                      created unrest and discontent across<br />
-                      the galaxy, as many systems rely heavily<br />
-                      on these routes for commerce and survival.<br />
-                      <br />
-                      Hoping to resolve the matter with a blockade<br />
-                      of deadly battleships, the greedy Trade<br />
-                      Federation has stopped all shipping to the<br />
-                      small planet of Naboo. This action has caused<br />
-                      widespread panic and suffering among the Naboo<br />
-                      citizens, who are now facing shortages of<br />
-                      essential supplies.<br />
-                      <br />
-                      While the Congress of the Republic endlessly<br />
-                      debates this alarming chain of events, the<br />
-                      Supreme Chancellor has secretly dispatched<br />
-                      two Jedi Knights, the guardians of peace and<br />
-                      justice in the galaxy, to settle the conflict.<br />
-                      These Jedi Knights, known for their wisdom and<br />
-                      combat prowess, are expected to negotiate a<br />
-                      peaceful resolution and prevent further escalation.<br />
-                      <br />
-                      However, as the Jedi approach the blockade, they sense<br />
-                      that the situation is far more complex than it appears.<br />
-                      The Trade Federation&apos;s motives seem to be influenced<br />
-                      by a darker force, one that seeks to exploit the<br />
-                      turmoil for its gain. The Jedi must uncover<br />
-                      this hidden threat and thwart its plans before it<br />
-                      plunges the entire galaxy into chaos.<br />
-                      <br />
-                      Upon arriving on Naboo, the Jedi Knights meet with<br />
-                      the planet&apos;s leaders, including the courageous<br />
-                      Queen Amidala. Together, they devise a plan to evade<br />
-                      the blockade and bring their plight to the attention<br />
-                      of the Republic. Their journey is fraught with danger,<br />
-                      as they face numerous obstacles and adversaries determined<br />
-                      to maintain the blockade and subjugate Naboo.<br />
-                      <br />
-                      As the Jedi continue their mission, they discover that<br />
-                      the Trade Federation&apos;s blockade is merely a symptom<br />
-                      of a much larger conspiracy. A shadowy Sith Lord is orchestrating<br />
-                      events from the shadows, manipulating both the Republic and the<br />
-                      Federation to achieve his nefarious goals. The Jedi must act swiftly<br />
-                      to expose this dark force and prevent it from seizing control of the galaxy.<br />
-                      <br />
-                      Meanwhile, back in the Republic, political intrigue and betrayal<br />
-                      threaten to undermine the efforts to resolve the crisis.<br />
-                      Senators with hidden agendas vie for power, and the Chancellor<br />
-                      struggles to maintain order amidst the chaos. The fate of Naboo,<br />
-                      and indeed the entire galaxy, hangs in the balance as the forces<br />
-                      of good and evil clash in a battle for supremacy.<br />
-                      <br />
-                      The Jedi Knights, with their unwavering dedication to justice,<br />
-                      become beacons of hope for the oppressed people of Naboo.<br />
-                      Their bravery and determination inspire others to join the fight<br />
-                      against tyranny, leading to a climactic showdown that will determine the<br />
-                      future of the galaxy. In this epic struggle, the bonds of friendship and<br />
-                      loyalty are tested, and the true strength of the Jedi is revealed.<br />
-                      <br />
-                      As the final battle approaches, the Jedi must confront the Sith<br />
-                      Lord and his minions, using all their skills and knowledge to<br />
-                      restore peace to the galaxy. Their actions will have far-reaching consequences,<br />
-                      shaping the destiny of the Republic and setting the stage for future conflicts<br />
-                      and adventures. In the end, the light of the Jedi will shine brightly, dispelling<br />
-                      the darkness that threatens to engulf the galaxy and ensuring that justice prevails.
-                    </p>
-                  </div>
+                <div className="fixed z-10 flex items-center justify-center h-screen w-screen top-0 left-0">
+                  <p
+                    className={cn(
+                      "inline-block text-emerald-400 text-4xl font-mono",
+                      "animate-scroll"
+                    )}
+                    style={{
+                      textShadow: "0px 0px 5px rgba(0, 255, 0, 1)",
+                    }}
+                  >
+                    fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
+                    fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
+                    fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
+                    fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
+                    fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
+                    fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
+                    fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
+                    fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
+                    fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
+                    fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
+                  </p>
                 </div>
+              );
+            default:
+              const firstPartOfText = [ "Using", "In", "With help from", "By" ];
+              const secondPartOfText = [ "next.js", "JavaScript", "Github copilot", "0xe0b69e" ];
+              
+              return (
+                <h1
+                  className="text-4xl duration-500 ease-in-out"
+                  style={{
+                    fontSize: `${2 + chapter}rem`,
+                    lineHeight: `${4 + chapter}rem`,
+                    textShadow: `0px 0px 5px ${TailwindConfig.theme.extend.colors.primary.lighter}`,
+                  }}
+                >
+                  {firstPartOfText[ chapter ]} <span className="font-mono">{secondPartOfText[ chapter ]}</span>
+                </h1>
               );
           }
         } )()}
         {/* Social media >:3 */}
-        <div className="fixed bottom-2 right-2 flex flex-col space-y-2">
+        <div
+          className={cn(
+            // Width: 10rem, Height: 9rem
+            "fixed flex flex-col space-y-2 z-30 bottom-2 right-2 h-36 transition-all duration-1000 ease-in-out p-2",
+            "w-full sm:w-40"
+          )}
+          style={didEnd ? (
+            {
+              // To the right, To the bottom
+              transform: "translate(calc(-50vw + 53%), 0)", // Why 53%? Idk, it just works
+              transitionDelay: "3s"
+            }
+          ) : ( {} )}
+        >
           <Link
             target="_blank"
             href="https://x.com/0xe0b69e"
             className={cn(
               "text-white flex justify-between items-center bg-black p-2 space-x-4 rounded-md",
-              "ease-in-out hover:-translate-x-4",
+              "ease-in-out",
+              didEnd ? "hover:scale-110" : "hover:-translate-x-4",
               isReady ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0",
               initialAnimationComplete ? "duration-300" : "duration-1000"
             )}
@@ -277,7 +275,8 @@ export default function Page ()
             href="https://github.com/0xe0b69e"
             className={cn(
               "text-white flex justify-between items-center bg-[#010409] p-2 space-x-4 rounded-md",
-              "ease-in-out hover:-translate-x-4",
+              "ease-in-out",
+              didEnd ? "hover:scale-110" : "hover:-translate-x-4",
               isReady ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0",
               initialAnimationComplete ? "duration-300" : "duration-1000"
             )}
@@ -291,7 +290,8 @@ export default function Page ()
             href="https://t.me/xe0b69e"
             className={cn(
               "text-white flex justify-between items-center bg-[#25a3e1] p-2 space-x-4 rounded-md",
-              "ease-in-out hover:-translate-x-4",
+              "ease-in-out",
+              didEnd ? "hover:scale-110" : "hover:-translate-x-4",
               isReady ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0",
               initialAnimationComplete ? "duration-300" : "duration-1000"
             )}
