@@ -26,7 +26,8 @@
     "react-spring": "^9.7.3",
     "react-tooltip": "^5.26.4",
     "tailwind-merge": "^2.3.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "tone": "^15.0.4"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",

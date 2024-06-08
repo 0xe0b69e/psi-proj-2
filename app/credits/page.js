@@ -11,7 +11,7 @@ import { BsMusicNote } from "react-icons/bs";
 export default function Page ()
 {
   const introTimeouts = useMemo( () => [ 2000, 2000, 1100, 1100, 2200, 2000, 2000, 1100, 1100, 2000 ], [] );
-  const chapterTimeouts = useMemo( () => [ 2000, 2000, 2000, 2000 ], [] );
+  const chapterTimeouts = useMemo( () => [ 2000, 2000, 2000, 10660, 0 ], [] ); // TODO: Last index doesn't do shit
   
   const [ interacted, setInteracted ] = useState( false ); // Make sure I can play song
   const [ audio, setAudio ] = useState( null ); // Set song
@@ -25,7 +25,7 @@ export default function Page ()
   {
     const audio = new Audio( "https://j3rzy.dev/files/AGST%20%20-%20Fights.mp3" );
     audio.loop = true;
-    audio.volume = 1;
+    audio.volume = 0.5;
     setAudio( audio );
   }, [] );
   
@@ -80,7 +80,7 @@ export default function Page ()
   return (
     <main
       className={cn(
-        "min-w-full min-h-full bg-background-dark text-primary-lighter p-10 flex justify-center items-center",
+        "min-w-full min-h-full bg-background-dark text-primary-lighter p-10 flex justify-center items-center overflow-hidden",
         delius.className
       )}
     >
@@ -110,7 +110,7 @@ export default function Page ()
       <div
         className={cn(
           "fixed w-screen h-screen flex items-center justify-center",
-          "text-white bg-primary-lighter px-4 py-2 shadow-lg",
+          "text-white bg-gradient-to-r from-primary to-secondary px-4 py-2 shadow-lg",
           "z-40 duration-75",
           introScaling < 1 && "rounded-lg",
           !interacted && "cursor-pointer",
@@ -134,7 +134,7 @@ export default function Page ()
       {/* Actual content */}
       <div
         className={cn(
-          "transition-all ease-in-out",
+          "transition-all ease-in-out overflow-hidden",
           isReady ? "opacity-100" : "opacity-0",
         )}
         style={{ transitionDuration: "2s" }}
@@ -146,20 +146,20 @@ export default function Page ()
           {
             case 0:
               return (
-                <h1 className="text-4xl">
+                <h1 className="text-4xl animate-pulse">
                   By <span className="font-mono">0xe0b69e</span>
                 </h1>
               );
             case 1:
               return (
                 <h1 className="text-4xl">
-                  Using <span className="font-mono">next.js</span>
+                  In <span className="font-mono">JavaScript</span>
                 </h1>
               );
             case 2:
               return (
                 <h1 className="text-4xl">
-                  By <span className="font-mono">0xe0b69e</span>
+                  For <span className="font-mono">not me</span>
                 </h1>
               );
             case 3:
@@ -167,6 +167,36 @@ export default function Page ()
                 <h1 className="text-4xl">
                   Using <span className="font-mono">next.js</span>
                 </h1>
+              );
+            case 4:
+              audio.volume = 1;
+              return (
+                <div className="flex items-center justify-center">
+                  <div className="text-white text-lg font-bold tracking-wide uppercase flex items-center justify-center">
+                    <p className="marquee inline-block font-mono">
+                      Turmoil has engulfed the<br />
+                      Galactic Republic. The taxation<br />
+                      of trade routes to outlying star<br />
+                      systems is in dispute.<br />
+                      <br />
+                      Hoping to resolve the matter<br />
+                      with a blockade of deadly<br />
+                      battleships, the greedy Trade<br />
+                      Federation has stopped all<br />
+                      shipping to the small planet<br />
+                      of Naboo.<br />
+                      <br />
+                      While the Congress of the<br />
+                      Republic endlessly debates<br />
+                      this alarming chain of events,<br />
+                      the Supreme Chancellor has<br />
+                      secretly dispatched two Jedi<br />
+                      Knights, the guardians of<br />
+                      peace and justice in the<br />
+                      galaxy, to settle the conflict....
+                    </p>
+                  </div>
+                </div>
               );
           }
         } )()}
