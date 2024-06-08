@@ -172,28 +172,85 @@ export default function Page ()
               audio.volume = 1;
               return (
                 <div className="flex items-center justify-center">
-                  <div className="text-white text-lg font-bold tracking-wide uppercase flex items-center justify-center">
-                    <p className="marquee inline-block font-mono">
-                      Turmoil has engulfed the<br />
-                      Galactic Republic. The taxation<br />
-                      of trade routes to outlying star<br />
-                      systems is in dispute.<br />
+                  <div className="text-white text-lg tracking-wide flex items-center justify-center">
+                    <p
+                      className="marquee inline-block text-yellow-200 text-4xl font-mono"
+                      style={{
+                        transform: "rotateX(20deg) translateY(25%)",
+                        transformOrigin: "50% 100%",
+                        perspective: "300px",
+                        textShadow: "0px 0px 5px rgba(255, 255, 0, 1)",
+                        textAlign: "justify"
+                    }}
+                    >
+                      {/* Yes, this is AI generated */}
+                      Turmoil has engulfed the Galactic Republic.<br />
+                      The taxation of trade routes to outlying<br />
+                      star systems is in dispute. This has<br />
+                      created unrest and discontent across<br />
+                      the galaxy, as many systems rely heavily<br />
+                      on these routes for commerce and survival.<br />
                       <br />
-                      Hoping to resolve the matter<br />
-                      with a blockade of deadly<br />
-                      battleships, the greedy Trade<br />
-                      Federation has stopped all<br />
-                      shipping to the small planet<br />
-                      of Naboo.<br />
+                      Hoping to resolve the matter with a blockade<br />
+                      of deadly battleships, the greedy Trade<br />
+                      Federation has stopped all shipping to the<br />
+                      small planet of Naboo. This action has caused<br />
+                      widespread panic and suffering among the Naboo<br />
+                      citizens, who are now facing shortages of<br />
+                      essential supplies.<br />
                       <br />
-                      While the Congress of the<br />
-                      Republic endlessly debates<br />
-                      this alarming chain of events,<br />
-                      the Supreme Chancellor has<br />
-                      secretly dispatched two Jedi<br />
-                      Knights, the guardians of<br />
-                      peace and justice in the<br />
-                      galaxy, to settle the conflict....
+                      While the Congress of the Republic endlessly<br />
+                      debates this alarming chain of events, the<br />
+                      Supreme Chancellor has secretly dispatched<br />
+                      two Jedi Knights, the guardians of peace and<br />
+                      justice in the galaxy, to settle the conflict.<br />
+                      These Jedi Knights, known for their wisdom and<br />
+                      combat prowess, are expected to negotiate a<br />
+                      peaceful resolution and prevent further escalation.<br />
+                      <br />
+                      However, as the Jedi approach the blockade, they sense<br />
+                      that the situation is far more complex than it appears.<br />
+                      The Trade Federation&apos;s motives seem to be influenced<br />
+                      by a darker force, one that seeks to exploit the<br />
+                      turmoil for its gain. The Jedi must uncover<br />
+                      this hidden threat and thwart its plans before it<br />
+                      plunges the entire galaxy into chaos.<br />
+                      <br />
+                      Upon arriving on Naboo, the Jedi Knights meet with<br />
+                      the planet&apos;s leaders, including the courageous<br />
+                      Queen Amidala. Together, they devise a plan to evade<br />
+                      the blockade and bring their plight to the attention<br />
+                      of the Republic. Their journey is fraught with danger,<br />
+                      as they face numerous obstacles and adversaries determined<br />
+                      to maintain the blockade and subjugate Naboo.<br />
+                      <br />
+                      As the Jedi continue their mission, they discover that<br />
+                      the Trade Federation&apos;s blockade is merely a symptom<br />
+                      of a much larger conspiracy. A shadowy Sith Lord is orchestrating<br />
+                      events from the shadows, manipulating both the Republic and the<br />
+                      Federation to achieve his nefarious goals. The Jedi must act swiftly<br />
+                      to expose this dark force and prevent it from seizing control of the galaxy.<br />
+                      <br />
+                      Meanwhile, back in the Republic, political intrigue and betrayal<br />
+                      threaten to undermine the efforts to resolve the crisis.<br />
+                      Senators with hidden agendas vie for power, and the Chancellor<br />
+                      struggles to maintain order amidst the chaos. The fate of Naboo,<br />
+                      and indeed the entire galaxy, hangs in the balance as the forces<br />
+                      of good and evil clash in a battle for supremacy.<br />
+                      <br />
+                      The Jedi Knights, with their unwavering dedication to justice,<br />
+                      become beacons of hope for the oppressed people of Naboo.<br />
+                      Their bravery and determination inspire others to join the fight<br />
+                      against tyranny, leading to a climactic showdown that will determine the<br />
+                      future of the galaxy. In this epic struggle, the bonds of friendship and<br />
+                      loyalty are tested, and the true strength of the Jedi is revealed.<br />
+                      <br />
+                      As the final battle approaches, the Jedi must confront the Sith<br />
+                      Lord and his minions, using all their skills and knowledge to<br />
+                      restore peace to the galaxy. Their actions will have far-reaching consequences,<br />
+                      shaping the destiny of the Republic and setting the stage for future conflicts<br />
+                      and adventures. In the end, the light of the Jedi will shine brightly, dispelling<br />
+                      the darkness that threatens to engulf the galaxy and ensuring that justice prevails.
                     </p>
                   </div>
                 </div>
