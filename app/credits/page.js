@@ -124,14 +124,14 @@ export default function Page ()
         <div
           className={cn(
             "w-1/2 h-full left-0 top-0 fixed bg-foreground-dark ease-in-out",
-            !didEnd && "-translate-x-[100vw] -rotate-45",
+            !didEnd && "-translate-x-full -rotate-45 opacity-0",
           )}
           style={{ transitionDuration: "2s", transitionDelay: "0s" }}
         />
         <div
           className={cn(
             "w-1/2 h-full right-0 top-0 fixed bg-foreground-dark ease-in-out",
-            !didEnd && "translate-x-[100vw] rotate-45",
+            !didEnd && "translate-x-full rotate-45 opacity-0",
           )}
           style={{ transitionDuration: "2s", transitionDelay: "0.5s" }}
         />
@@ -271,14 +271,14 @@ export default function Page ()
         <div
           className={cn(
             // Width: 10rem, Height: 9rem
-            "fixed flex flex-col space-y-2 z-30 bottom-2 right-2 h-36 transition-all duration-1000 ease-in-out p-2",
+            "fixed flex flex-col space-y-2 z-30 bottom-2 right-2 transition-all duration-1000 ease-in-out sm:p-2",
             "w-full",
-            didEnd ? "sm:w-60" : "max-sm:left-2 sm:w-40"
+            didEnd ? "w-64" : "max-sm:left-2 sm:w-40"
           )}
           style={didEnd ? (
             {
               // To the right, To the bottom
-              transform: "translate(calc(-50vw + 53%), 0)", // Why 53%? Idk, it just works
+              transform: "translate(calc(-50vw + 50%), 0)", // Why 53%? Idk, it just works
               transitionDelay: "1.5s"
             }
           ) : ( {} )}
