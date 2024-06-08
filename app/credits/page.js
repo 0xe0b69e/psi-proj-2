@@ -124,14 +124,14 @@ export default function Page ()
         <div
           className={cn(
             "w-1/2 h-full left-0 top-0 fixed bg-foreground-dark ease-in-out",
-            !didEnd && "-translate-x-full",
+            !didEnd && "-translate-x-[100vw] -rotate-45",
           )}
           style={{ transitionDuration: "2s", transitionDelay: "0s" }}
         />
         <div
           className={cn(
             "w-1/2 h-full right-0 top-0 fixed bg-foreground-dark ease-in-out",
-            !didEnd && "translate-x-full",
+            !didEnd && "translate-x-[100vw] rotate-45",
           )}
           style={{ transitionDuration: "2s", transitionDelay: "0.5s" }}
         />
@@ -148,7 +148,7 @@ export default function Page ()
             className={cn(
               "rounded-full",
               "ease-in-out transition-all duration-1000",
-              didEnd ? "opacity-100" : "opacity-0",
+              didEnd ? "opacity-100 rotate-0" : "opacity-0 rotate-90",
             )}
             style={{ transitionDelay: "1.5s" }}
           />
@@ -190,7 +190,7 @@ export default function Page ()
         style={{ scale: `${introScaling}` }}
         onClick={() =>
         {
-          if ( audio ) audio.play();
+          if ( audio && !interacted ) audio.play();
         }}
       >
         <p className={cn( "text-2xl select-none", !interacted && "cursor-pointer" )}>
@@ -223,27 +223,29 @@ export default function Page ()
                       overflowWrap: "anywhere"
                     }}
                   >
-                    Developed by 0xe0b69e<br />
+                    Developed by @0xe0b69e<br />
                     <br />
                     Dashboard design by someone at startbootstrap<br />
                     <br />
-                    Outro design by 0xe0b69e<br />
+                    Outro idea by @DisruptReality<br />
                     <br />
-                    Frontend Development by 0xe0b69e<br />
+                    Outro design by @0xe0b69e<br />
                     <br />
-                    Backend Development by noone (there is no backend)<br />
+                    Frontend Development by @0xe0b69e<br />
                     <br />
-                    Testing by 0xe0b69e<br />
+                    Animations by @0xe0b69e<br />
                     <br />
-                    Special Thanks to GitHub Copilot<br />
+                    Testing by @0xe0b69e<br />
                     <br />
-                    Powered by JavaScript and Next.js<br />
+                    Powered by Next.js<br />
                     <br />
                     Hosted on GitHub<br />
                     <br />
+                    Outro music idea by @DisruptReality and @KiLABGaming<br />
+                    <br />
                     Music by AGST<br />
                     <br />
-                    Outro idea by @DisruptReality<br />
+                    Special Thanks to GitHub Copilot<br />
                   </div>
                 </div>
               );
