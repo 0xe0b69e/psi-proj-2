@@ -86,11 +86,16 @@ module.exports = {
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
+        },
+        "scroll": {
+          from: { transform: "translateY(100%)" },
+          to: { transform: "translateY(-100%)" },
         }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "scroll": "scroll 220s linear infinite",
       },
     },
   },

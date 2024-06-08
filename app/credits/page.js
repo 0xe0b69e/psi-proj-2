@@ -212,14 +212,15 @@ export default function Page ()
           {
             case 4:
               return (
-                <div className="fixed z-10 flex justify-center h-screen w-screen top-0 left-0">
-                  <p
+                <div className="fixed z-10 flex justify-center h-screen w-screen top-0 left-0 text-wrap break-words">
+                  <div
                     className={cn(
                       "inline-block text-emerald-400 text-4xl font-mono",
-                      "animate-scroll"
+                      "animate-scroll",
                     )}
                     style={{
                       textShadow: "0px 0px 5px rgba(0, 255, 0, 1)",
+                      overflowWrap: "anywhere"
                     }}
                   >
                     fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
@@ -232,7 +233,7 @@ export default function Page ()
                     fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
                     fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
                     fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
-                  </p>
+                  </div>
                 </div>
               );
             default:
@@ -258,8 +259,8 @@ export default function Page ()
           className={cn(
             // Width: 10rem, Height: 9rem
             "fixed flex flex-col space-y-2 z-30 bottom-2 right-2 h-36 transition-all duration-1000 ease-in-out p-2",
-            "w-full sm:w-40",
-            !didEnd && "max-sm:left-2"
+            "w-full",
+            didEnd ? "sm:w-60" : "max-sm:left-2 sm:w-40"
           )}
           style={didEnd ? (
             {
