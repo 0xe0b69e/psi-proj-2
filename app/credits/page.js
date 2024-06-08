@@ -212,7 +212,7 @@ export default function Page ()
           {
             case 4:
               return (
-                <div className="fixed z-10 flex items-center justify-center h-screen w-screen top-0 left-0">
+                <div className="fixed z-10 flex justify-center h-screen w-screen top-0 left-0">
                   <p
                     className={cn(
                       "inline-block text-emerald-400 text-4xl font-mono",
@@ -243,8 +243,8 @@ export default function Page ()
                 <h1
                   className="text-4xl duration-500 ease-in-out"
                   style={{
-                    fontSize: `${2 + chapter}rem`,
-                    lineHeight: `${4 + chapter}rem`,
+                    fontSize: `${(chapter+5)*5}px`,
+                    lineHeight: `${(chapter+5)*5+10}px`,
                     textShadow: `0px 0px 5px ${TailwindConfig.theme.extend.colors.primary.lighter}`,
                   }}
                 >
