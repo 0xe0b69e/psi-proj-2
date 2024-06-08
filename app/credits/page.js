@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { PiTelegramLogo, PiXLogo } from "react-icons/pi";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { GitHubLogoIcon, GlobeIcon } from "@radix-ui/react-icons";
 import { delius } from "@/lib/fonts";
 import { BsMusicNote } from "react-icons/bs";
 import TailwindConfig from "@/tailwind.config";
@@ -150,17 +150,30 @@ export default function Page ()
               "ease-in-out transition-all duration-1000",
               didEnd ? "opacity-100" : "opacity-0",
             )}
+            style={{ transitionDelay: "1.5s" }}
           />
           <p
             className={cn(
-              "text-2xl text-sky-400",
+              "text-2xl text-slate-500",
               "ease-in-out transition-all duration-1000",
               didEnd ? "opacity-100" : "opacity-0",
             )}
-            style={{ transitionDelay: "1s" }}
+            style={{ transitionDelay: "2s" }}
           >
             @0xe0b69e
           </p>
+          <Link
+            href="https://j3rzy.dev/"
+            className={cn(
+              "flex flex-row text-sky-500 hover:underline items-center space-x-1",
+              "ease-in-out transition-all duration-1000",
+              didEnd ? "opacity-100" : "opacity-0",
+            )}
+            style={{ transitionDelay: "3s" }}
+          >
+            <GlobeIcon className="w-4 h-4" />
+            <p>j3rzy.dev</p>
+          </Link>
         </div>
       </div>
       {/* To be able to play music and stuff - "Dramatic intro" or smth */}
@@ -245,13 +258,14 @@ export default function Page ()
           className={cn(
             // Width: 10rem, Height: 9rem
             "fixed flex flex-col space-y-2 z-30 bottom-2 right-2 h-36 transition-all duration-1000 ease-in-out p-2",
-            "w-full sm:w-40"
+            "w-full sm:w-40",
+            !didEnd && "max-sm:left-2"
           )}
           style={didEnd ? (
             {
               // To the right, To the bottom
               transform: "translate(calc(-50vw + 53%), 0)", // Why 53%? Idk, it just works
-              transitionDelay: "3s"
+              transitionDelay: "1.5s"
             }
           ) : ( {} )}
         >
