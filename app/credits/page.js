@@ -153,13 +153,13 @@ export default function Page ()
             case 1:
               return (
                 <h1 className="text-4xl">
-                  In <span className="font-mono">JavaScript</span>
+                  With help from <span className="font-mono">Github copilot</span>
                 </h1>
               );
             case 2:
               return (
                 <h1 className="text-4xl">
-                  For <span className="font-mono">not me</span>
+                  In <span className="font-mono">JavaScript</span>
                 </h1>
               );
             case 3:
@@ -180,8 +180,7 @@ export default function Page ()
                         transformOrigin: "50% 100%",
                         perspective: "300px",
                         textShadow: "0px 0px 5px rgba(255, 255, 0, 1)",
-                        textAlign: "justify"
-                    }}
+                      }}
                     >
                       {/* Yes, this is AI generated */}
                       Turmoil has engulfed the Galactic Republic.<br />

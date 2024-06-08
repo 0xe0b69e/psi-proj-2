@@ -76,12 +76,12 @@
   }
 
 @keyframes marquee {
-  0% { top: 100vh; }
+  0% { top: 110vh; }
   100% { top: -100vh; }
 }
 
 .marquee {
   position: fixed;
   top: 100vh;
-  animation: marquee 40s linear infinite;
+  animation: marquee 120s linear infinite;
 }
