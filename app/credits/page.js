@@ -223,16 +223,27 @@ export default function Page ()
                       overflowWrap: "anywhere"
                     }}
                   >
-                    fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
-                    fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
-                    fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
-                    fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
-                    fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
-                    fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
-                    fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
-                    fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
-                    fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
-                    fdsfkjlghdkfjghkdfjghdkfjghjkh<br />
+                    Developed by 0xe0b69e<br />
+                    <br />
+                    Dashboard design by someone at startbootstrap<br />
+                    <br />
+                    Outro design by 0xe0b69e<br />
+                    <br />
+                    Frontend Development by 0xe0b69e<br />
+                    <br />
+                    Backend Development by noone (there is no backend)<br />
+                    <br />
+                    Testing by 0xe0b69e<br />
+                    <br />
+                    Special Thanks to GitHub Copilot<br />
+                    <br />
+                    Powered by JavaScript and Next.js<br />
+                    <br />
+                    Hosted on GitHub<br />
+                    <br />
+                    Music by AGST<br />
+                    <br />
+                    Outro idea by @DisruptReality<br />
                   </div>
                 </div>
               );
