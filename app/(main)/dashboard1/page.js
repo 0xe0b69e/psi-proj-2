@@ -56,9 +56,9 @@ export default function Page ()
           <div className="w-full 2xl+:w-[67%] flex flex-col space-y-6">
             <Card className="w-full">
               <CardHeader className="items-end">
-                <p>fsdfs</p>
-                <p>fsdfs</p>
-                <p>fsdfs</p>
+                <CardHeader className="justify-between px-5">
+                  <p className="text-lg text-primary-lighter">Earnings Breakdown</p>
+                </CardHeader>
               </CardHeader>
               <div className="w-full p-5">
                 {( () =>
