@@ -61,6 +61,18 @@ export default function Sidenav ( { visible, toggleSideNav } )
               <p>One</p>
             </div>
           </Link>
+          <Link
+            href="/dashboard2"
+          >
+            <div
+              className={cn(
+                "w-full h-[38px]",
+                path === "/dashboard2" && "text-primary-lighter font-bold",
+              )}
+            >
+              <p>Two</p>
+            </div>
+          </Link>
         </Item>
         <span className="flex-grow" />
         <div

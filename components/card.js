@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 export const Card = ( { children, className, ...props } ) => (
-  <div className={cn( "bg-white dark:bg-gray-800 shadow-md rounded-md", className )} {...props}>
+  <div className={cn( "bg-white dark:bg-gray-800 shadow-2xl rounded-md", className )} {...props}>
     {children}
   </div>
 );
